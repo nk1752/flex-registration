@@ -68,6 +68,6 @@ jobs:
 
       - name: register
         run: |
-          docker run --entrypoint flexctl dump mulesoft/flex-gateway:latest 
+          sudo docker run --entrypoint flexctl -u $UID
 
       
