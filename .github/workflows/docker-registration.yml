@@ -81,4 +81,8 @@ jobs:
             --output-directory=/registration \
             gateway-9
 
+      - name: list files
+        run: |
+          ls -l
+
       
