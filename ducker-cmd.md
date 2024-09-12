@@ -1,3 +1,10 @@
+# connected app1
+client id = b95726291f564ae2942ac2c4ecc46311
+client secret = 59dB6D7A84bd442bAfE7422233a82902
+org id = a6ea8ce7-6d5f-41ee-a802-5505e8833854
+env id = 2c6f18bb-03e2-4874-a489-7216df5b5bc2
+
+
 docker pull mulesoft/flex-gateway:latest
 
 # registration with **username & password**
@@ -22,6 +29,18 @@ docker run --entrypoint flexctl -u $UID \
   --connected=true \
   --split=true \
   flex-gateway-2
+
+# registration with **connected app**
+docker run --entrypoint flexctl \
+-v "$(pwd)/registration-8":/registration -u $UID mulesoft/flex-gateway \
+registration create \
+--client-id=b95726291f564ae2942ac2c4ecc46311 \
+--client-secret=59dB6D7A84bd442bAfE7422233a82902 \
+--environment=2c6f18bb-03e2-4874-a489-7216df5b5bc2 \
+--connected=true \
+--organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854 \
+--output-directory=/registration \
+gateway-8
 
 # Run
 docker run --rm \
