@@ -85,4 +85,8 @@ jobs:
         run: |
           ls -l
 
+      - name: store
+        run: |
+          cat registration.yaml
+
       
