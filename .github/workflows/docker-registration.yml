@@ -65,7 +65,7 @@ jobs:
           sudo docker run --entrypoint flexctl -u $UID \
             -v "$(pwd)/registration-1":/registration mulesoft/flex-gateway \
             registration create --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854 \
-            --token=3270f0d7-f364-4390-8b9d-a31ded5d234d \
+            --token=4552085b-c7dd-4615-94f0-b438b8669116 \
             --output-directory=/registration \
             --connected=true \
             ci-gw-1
