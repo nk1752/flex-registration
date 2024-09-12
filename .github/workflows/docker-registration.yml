@@ -66,8 +66,11 @@ jobs:
           echo "Hello, World!" > temp/hello.txt
           ls -l
 
+      # docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+      # Aliases: docker run
       - name: register
         run: |
-          sudo docker run --entrypoint flexctl -u $UID
+          sudo docker run --entrypoint flexctl -u $UID \
+            -v /var/run/docker.sock:/var/run/docker.sock
 
       
