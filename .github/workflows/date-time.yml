@@ -29,6 +29,18 @@ jobs:
       repository-projects: write # read|write|none
       security-events: write # read|write|none
     steps:
+
+      - name: 'Setup jq'
+        uses: dcarbone/install-jq-action@v2
+        with:
+          version: '1.7'
+
+      - name: 'Check jq'
+        # language=sh
+        run: |
+          which jq
+          jq --version
+          
       - name: Checkout repository
         uses: actions/checkout@v4
 
