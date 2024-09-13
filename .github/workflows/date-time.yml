@@ -1,0 +1,24 @@
+name: date-time
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  workflow_dispatch:
+
+env:
+  # Use docker.io for Docker Hub if empty
+  RENEW: false
+
+jobs:
+  DateTime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get date and time
+        run: |
+          reg-time = {"expiration_date":"2025-09-25 19:27:53 +0000 UTC"}
+          cat reg-time
+          current-time = NOW
+          echo "The current date and time is $(current)."

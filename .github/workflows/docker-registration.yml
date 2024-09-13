@@ -6,12 +6,6 @@ name: register & store
 # documentation.
 
 on:
-  push:
-    branches: ["main"]
-    # Publish semver tags as releases.
-    tags: ["v*.*.*"]
-  pull_request:
-    branches: ["main"]
   workflow_dispatch:
 
 env:
@@ -110,6 +104,7 @@ jobs:
           current_time=$(date +%s)
           echo "current_time: $current_time"
           cat reg-date.yaml
+          expiry_time=$(cat reg-date.yaml | jq -r '.expiration_date')
           
 
       
