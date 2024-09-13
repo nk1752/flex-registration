@@ -97,15 +97,11 @@ jobs:
         run: |
           sleep 5
 
-      # Start
-      - name: Start
+      # inspect registration.yaml
+      - name: inspection
         run: |
-          docker run --rm \
-            -v "$(pwd)/temp":/usr/local/share/mulesoft/flex-gateway/conf.d \
-            -p 8080:8080 \
-            mulesoft/flex-gateway
+          sudo docker run --entrypoint flexctl \
+            -u $UID mulesoft/flex-gateway \
+            inspect
 
-      - name: wait & exit
-        run: |
-          sleep 20
-          exit 0
+      
