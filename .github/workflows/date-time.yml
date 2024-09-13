@@ -21,7 +21,8 @@ jobs:
           # get current date and time
           current_time=$(date -u +%s)
           echo "current_time: $current_time"
-          echo "current_time: $current_time" > current-time.yaml
+          
+          echo "{current_time: $current_time}" > current-time.yaml
           cat current-time.yaml
           
           expiry_time=$(cat current-time.yaml | jq -r '.current_time')
