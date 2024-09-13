@@ -100,8 +100,6 @@ jobs:
       # inspect registration.yaml
       - name: inspection
         run: |
-          sudo docker run --entrypoint flexctl \
-            -u $UID mulesoft/flex-gateway \
-            inspect
+          sudo docker run --entrypoint flexctl inspect
 
       
