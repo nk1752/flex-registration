@@ -69,18 +69,9 @@ jobs:
       # docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
       # Aliases: docker run
 
-      - name: obtain flexctl
-        run: |
-          sudo docker run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/bin/flexctl > flexctl
-          chmod +x flexctl
-          sudo docker run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/lib/libdw_parser.so > libdw_parser.so
-          export LD_LIBRARY_PATH="$(PWD)"
-          chmod +x libdw_parser.so
-          ./flexctl --version
-      
       - name: register
         run: |
-          ./flexctl \
+          sudo docker run --entrypoint flexctl \
             -v "$(pwd)":/registration -u $UID mulesoft/flex-gateway \
             registration create \
             --client-id=b95726291f564ae2942ac2c4ecc46311 \
@@ -108,6 +99,9 @@ jobs:
       # inspect registration.yaml
       - name: inspection
         run: |
-          ./flexctl registration inspect
+          sudo docker run --entrypoint flexctl \
+            -v "$(pwd)":/registration \
+            -u $UID mulesoft/flex-gateway \
+            registration inspect --file=./registration.yaml
 
       
