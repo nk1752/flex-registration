@@ -44,9 +44,16 @@ jobs:
       - name: parse json file for current time
         run: |
           ls -l
-          
           jq '.' reg-time.json
-          jq '.expiration_date' reg-time.json
+          
+      # query for expiration_date and put it in a variable
+      - name: get expiration date
+        run: |      
+          echo jq '.expiration_date' reg-time.json > reg-time
+          
+          # convert reg-time string to seconds
+          tt=date -d "$(reg-time)" +%s
+
           
           
           
