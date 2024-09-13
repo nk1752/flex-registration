@@ -50,4 +50,10 @@ jobs:
       - name: get expiration date
         run: |      
           jq '.expiration_date' reg-time.json
+
+          jq -r '.expiration_date' reg-time.json
+
+          exp-date=read << jq '.expiration_date' reg-time.json 
+
+
           
