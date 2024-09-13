@@ -103,6 +103,13 @@ jobs:
           sudo docker run --entrypoint flexctl \
             -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
-            registration inspect --file=/registration/registration.yaml
+            registration inspect --file=/registration/registration.yaml > reg-date.yaml
+
+      - name: days remaining
+        run: |
+          current_time=$(date +%s)
+          echo "current_time: $current_time"
+          cat reg-date.yaml
+          
 
       
