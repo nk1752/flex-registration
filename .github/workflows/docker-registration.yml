@@ -114,10 +114,11 @@ jobs:
             --output-directory=/renew \
             /registration/registration.yaml
 
-      - name: list files
+      - name: push new registration to Artifactory
         run: |
-          ls -l
-          cd renew
+          cat registration.yaml
+          # zip registration.yaml
+          zip -r registration-new.zip registration.yaml
           ls -l
           
                       
