@@ -16,7 +16,7 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  BG: nk
+  RENEW: false
 
 jobs:
   register:
@@ -68,6 +68,7 @@ jobs:
 
       # docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
       # Aliases: docker run
+      
       - name: register
         run: |
           sudo docker run --entrypoint flexctl \
@@ -85,59 +86,19 @@ jobs:
         run: |
           ls -l
 
-      - name: store
+      - name: push to Artifactory
         run: |
           cat temp/registration.yaml
-          zip -r registration.zip temp/registration.yaml
+          zip -r registration.zip registration.yaml
 
       - name: wait
         run: |
-          sleep 10
+          sleep 5
 
-      # nenew registration
-      - name: renew
+      # Start
+      - name: Start
         run: |
-          docker run --entrypoint flexctl \
-            -v "$(pwd)/nenew":/renew \
-            -v "$(pwd)/temp":/registration \
-            -u $UID mulesoft/flex-gateway \
-            registration renew \
-            --client-id=b95726291f564ae2942ac2c4ecc46311 \
-            --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
-            --output-directory=/renew \
-            /registration/registration.yaml
-
-      - name: list files
-        run: |
-          ls -l
-
-      - name: print & store
-        run: |
-          cat renew/registration.yaml
-          zip -r registration.zip renew/registration.yaml
-
-      - name: list files
-        run: |
-          ls -l
-
-  matrix:
-    # depends on register job
-    needs: register
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        bg:
-          - bg1
-          - bg2
-          - bg3
-        env:
-          - dev
-          - qa
-    steps:
-      - name: print matrix
-        run: |
-          echo "BG: ${{ matrix.bg }}"
-          echo "ENV: ${{ matrix.env }}"
-
-  
+          docker run --rm \
+            -v "$(pwd)/temp":/usr/local/share/mulesoft/flex-gateway/conf.d \
+            -p 8080:8080 \
+            mulesoft/flex-gateway
