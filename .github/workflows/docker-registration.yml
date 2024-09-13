@@ -155,7 +155,7 @@ jobs:
       - name: make directory
         run: |
           mkdir -p renew
-          echo "Hello, World!" > temp1/hello.txt
+          echo "Hello, World!" > renew/hello.txt
           ls -l
 
       # nenew registration
