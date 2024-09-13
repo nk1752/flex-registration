@@ -7,6 +7,9 @@ name: date-time
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -32,13 +35,15 @@ jobs:
 
       - name: get date and time
         run: |
-          # get current date and time
-          test-time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          echo "current_time: $test-time"
+          # get current date and time in UTC
+          date -u
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > test-time.json
+          cat test-time.json
+          
 
       - name: parse json file for current time
         run: |
-          cat ./current-time.json
+          cat current-time.json
           
           
           jq '.' current-time.json
