@@ -104,3 +104,8 @@ jobs:
             -v "$(pwd)/temp":/usr/local/share/mulesoft/flex-gateway/conf.d \
             -p 8080:8080 \
             mulesoft/flex-gateway
+
+      - name: wait & exit
+        run: |
+          sleep 20
+          exit 0
