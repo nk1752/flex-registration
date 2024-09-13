@@ -16,31 +16,17 @@ jobs:
   DateTime:
     runs-on: ubuntu-latest
     permissions:
-      actions: write # read|write|none
-      checks: write # read|write|none
-      contents: write # read|write|none
-      deployments: write # read|write|none
+      contents: read # read|write|none
       id-token: write # read|write|none
-      issues: write # read|write|none
-      discussions: write # read|write|none
-      packages: write # read|write|none
-      pages: write # read|write|none
-      pull-requests: write # read|write|none
-      repository-projects: write # read|write|none
-      security-events: write # read|write|none
+      
     steps:
-
-      - name: 'Setup jq'
-        uses: dcarbone/install-jq-action@v2
-        with:
-          version: '1.7'
 
       - name: 'Check jq'
         # language=sh
         run: |
           which jq
           jq --version
-          
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -49,9 +35,13 @@ jobs:
           # get current date and time
           test-time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo "current_time: $test-time"
+
+      - name: parse json file for current time
+        run: |
+          cat ./current-time.json
           
           
-          jq '.' ./current-time.json
+          jq '.' current-time.json
           
           
           
