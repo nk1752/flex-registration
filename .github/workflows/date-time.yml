@@ -23,7 +23,7 @@ jobs:
           echo "current_time: $current_time"
           
           echo "{'current_time': '$current_time'}" > current-time.json
-          cat current-time.json | jq '.'
+          jq '.' current-time.json
           
           
           
