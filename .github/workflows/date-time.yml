@@ -18,10 +18,6 @@ jobs:
     steps:
       - name: get date and time
         run: |
-          reg-time = date -u +"%Y-%m-%d %H:%M:%S %Z"
+          # get current date and time
+          echo $date -u > reg-time
           echo "The current date and time is $(reg-time)."
-
-          sleep 20
-          
-          current-time = date -u +"%Y-%m-%d %H:%M:%S %Z"
-          echo "The current date and time is $(current-time)."
