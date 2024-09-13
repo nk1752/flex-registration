@@ -76,7 +76,7 @@ jobs:
           sudo docker run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/lib/libdw_parser.so > libdw_parser.so
           export LD_LIBRARY_PATH="$(PWD)"
           chmod +x libdw_parser.so
-          .flexctl --version
+          ./flexctl --version
       
       - name: register
         run: |
