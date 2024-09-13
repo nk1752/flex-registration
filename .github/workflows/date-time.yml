@@ -43,10 +43,10 @@ jobs:
 
       - name: parse json file for current time
         run: |
-          cat current-time.json
+          ls -l
           
-          
-          jq '.' current-time.json
+          jq '.' reg-time.json
+          jq '.expiration_date' reg-time.json
           
           
           
