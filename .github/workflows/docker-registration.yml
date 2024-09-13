@@ -91,6 +91,7 @@ jobs:
           cat registration.yaml
           # zip registration.yaml
           zip -r registration.zip registration.yaml
+          ls -l
 
       - name: wait
         run: |
@@ -102,6 +103,6 @@ jobs:
           sudo docker run --entrypoint flexctl \
             -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
-            registration inspect --file=./registration.yaml
+            registration inspect --file=/registration/registration.yaml
 
       
