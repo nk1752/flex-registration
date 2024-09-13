@@ -117,7 +117,9 @@ jobs:
       - name: list files
         run: |
           ls -l
-          cat renew/registration.yaml
+          cd renew
+          ls -l
+          
                       
 
       
