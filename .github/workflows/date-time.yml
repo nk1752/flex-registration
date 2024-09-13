@@ -19,5 +19,10 @@ jobs:
       - name: get date and time
         run: |
           # get current date and time
-          echo $date -u > reg-time
-          echo "The current date and time is $(reg-time)."
+          current_time=$(date -u +%s)
+          echo "current_time: $current_time"
+          echo "current_time: $current_time" > current-time.yaml
+          cat current-time.yaml
+          
+          expiry_time=$(cat current-time.yaml | jq -r '.current_time')
+          echo "expiry_time: $expiry_time"
