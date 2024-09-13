@@ -55,8 +55,10 @@ jobs:
 
           echo "exp-date=$(cat exp-date.json)" >> $GITHUB_ENV
           echo "env: ${{ env.exp-date }}"
+
+          date -d "2024-04-06" "+%s"
         
-          date -d $(cat exp-date.json) "+%s"
+          date -d $(cat exp-date.json) "+%d"
 
           
 
