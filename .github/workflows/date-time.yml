@@ -19,6 +19,6 @@ jobs:
       - name: get date and time
         run: |
           reg-time = {"expiration_date":"2025-09-25 19:27:53 +0000 UTC"}
-          cat reg-time
-          current-time = NOW
-          echo "The current date and time is $(current)."
+          cat $reg-time
+          current-time = date -u +"%Y-%m-%d %H:%M:%S %Z"
+          echo "The current date and time is $(current-time)."
