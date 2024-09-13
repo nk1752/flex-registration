@@ -49,6 +49,6 @@ jobs:
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |      
-          echo "exp-date=$(jq -r '.expiration_date' reg-time.json)" >> $GITHUB_ENV
+          echo "exp-date=$(jq '.expiration_date' reg-time.json)" >> $GITHUB_ENV
           echo ${{ env.exp-date }}
           
