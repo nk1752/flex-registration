@@ -15,15 +15,31 @@ env:
 jobs:
   DateTime:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write # read|write|none
+      checks: write # read|write|none
+      contents: write # read|write|none
+      deployments: write # read|write|none
+      id-token: write # read|write|none
+      issues: write # read|write|none
+      discussions: write # read|write|none
+      packages: write # read|write|none
+      pages: write # read|write|none
+      pull-requests: write # read|write|none
+      repository-projects: write # read|write|none
+      security-events: write # read|write|none
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: get date and time
         run: |
           # get current date and time
-          current_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          echo "current_time: $current_time"
+          test-time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "current_time: $test-time"
           
-          echo "{'current_time': '$current_time'}" > current-time.json
-          jq '.' current-time.json
+          
+          jq '.' ./current-time.json
           
           
           
