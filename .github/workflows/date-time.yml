@@ -19,11 +19,11 @@ jobs:
       - name: get date and time
         run: |
           # get current date and time
-          current_time=$(date -u +%s)
+          current_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo "current_time: $current_time"
           
           echo "{current_time: $current_time}" > current-time.json
           cat current-time.json
           
-          expiry_time=$(cat current-time.json | jq -r '.current_time')
-          echo "expiry_time: $expiry_time"
+          expiry_time=$(cat current-time.json | jq -r '.')
+          
