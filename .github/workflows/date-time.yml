@@ -50,5 +50,4 @@ jobs:
       - name: get expiration date
         run: |      
           jq '.expiration_date' reg-time.json >> exp-date
-          echo "expiration date is: $exp-date"
           date -d $exp-date +%s
