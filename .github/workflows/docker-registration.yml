@@ -7,35 +7,34 @@ name: register & store
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
+    tags: ["v*.*.*"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 env:
   # Use docker.io for Docker Hub if empty
   BG: nk
-  
+
 jobs:
   register:
-
     runs-on: ubuntu-latest
     permissions:
-      actions: write  # read|write|none
-      checks: write  # read|write|none
-      contents: write  # read|write|none
-      deployments: write  # read|write|none
-      id-token: write  # read|write|none
-      issues: write  # read|write|none
-      discussions: write  # read|write|none
+      actions: write # read|write|none
+      checks: write # read|write|none
+      contents: write # read|write|none
+      deployments: write # read|write|none
+      id-token: write # read|write|none
+      issues: write # read|write|none
+      discussions: write # read|write|none
       packages: write # read|write|none
-      pages: write  # read|write|none
-      pull-requests: write  # read|write|none
-      repository-projects: write  # read|write|none
-      security-events: write  # read|write|none
-      statuses: write  # read|write|none
+      pages: write # read|write|none
+      pull-requests: write # read|write|none
+      repository-projects: write # read|write|none
+      security-events: write # read|write|none
+      statuses: write # read|write|none
 
     steps:
       - name: Checkout repository
@@ -95,11 +94,10 @@ jobs:
     # depends on register job
     needs: register
     runs-on: ubuntu-latest
-    
 
     strategy:
       matrix:
-        bg: 
+        bg:
           - bg1
           - bg2
           - bg3
@@ -116,19 +114,19 @@ jobs:
     needs: matrix
     runs-on: ubuntu-latest
     permissions:
-      actions: write  # read|write|none
-      checks: write  # read|write|none
-      contents: write  # read|write|none
-      deployments: write  # read|write|none
-      id-token: write  # read|write|none
-      issues: write  # read|write|none
-      discussions: write  # read|write|none
+      actions: write # read|write|none
+      checks: write # read|write|none
+      contents: write # read|write|none
+      deployments: write # read|write|none
+      id-token: write # read|write|none
+      issues: write # read|write|none
+      discussions: write # read|write|none
       packages: write # read|write|none
-      pages: write  # read|write|none
-      pull-requests: write  # read|write|none
-      repository-projects: write  # read|write|none
-      security-events: write  # read|write|none
-      statuses: write  # read|write|none
+      pages: write # read|write|none
+      pull-requests: write # read|write|none
+      repository-projects: write # read|write|none
+      security-events: write # read|write|none
+      statuses: write # read|write|none
 
     steps:
       - name: Checkout repository
@@ -156,17 +154,32 @@ jobs:
 
       - name: make directory
         run: |
-          mkdir -p temp1
+          mkdir -p renew
           echo "Hello, World!" > temp1/hello.txt
           ls -l
 
       # nenew registration
-
       - name: renew
         run: |
-          echo "new registration"
+          docker run --entrypoint flexctl \
+            -v "$(pwd)/nenew":/renew \
+            -v "$(pwd)/temp":/registration \
+            -u $UID mulesoft/flex-gateway \
+            registration renew \
+            --client-id=b95726291f564ae2942ac2c4ecc46311 \
+            --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
+            --output-directory=/renew \
+            /registration/registration.yaml
 
+      - name: list files
+        run: |
+          ls -l
 
-      
+      - name: store
+        run: |
+          cat renew/registration.yaml
+          zip -r registration.zip renew/registration.yaml
 
-      
+      - name: list files
+        run: |
+          ls -l

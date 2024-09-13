@@ -44,19 +44,19 @@ gateway-8
 
 # Run
 docker run --rm \
--v "$(pwd)/registory-6":/usr/local/share/mulesoft/flex-gateway/conf.d \
+-v "$(pwd)/registory-8":/usr/local/share/mulesoft/flex-gateway/conf.d \
 -p 8082:8082 \
 mulesoft/flex-gateway
 
 # renew
 docker run --entrypoint flexctl \
 -v "$(pwd)/nenew":/renew \
--v "$(pwd)/registory":/registration \
+-v "$(pwd)/registration-8":/registration \
 -u $UID mulesoft/flex-gateway \
 registration renew \
---client-id=<your-client-id> \
---client-secret=<your-client-secret> \
+--client-id=b95726291f564ae2942ac2c4ecc46311 \
+--client-secret=59dB6D7A84bd442bAfE7422233a82902 \
 --output-directory=/renew \
-<path-to-registration-file-in-container>
+/usr/local/share/mulesoft/flex-gateway/conf.d
 
 docker exec -u $UID <container-name-or-id> flexctl registration inspect
