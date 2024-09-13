@@ -7,6 +7,9 @@ name: register & store
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -99,12 +102,17 @@ jobs:
             -u $UID mulesoft/flex-gateway \
             registration inspect --file=/registration/registration.yaml > reg-date.yaml
 
-      - name: days remaining
+      - name: renew
         run: |
-          current_time=$(date +%s)
-          echo "current_time: $current_time"
-          cat reg-date.yaml
-          expiry_time=$(cat reg-date.yaml | jq -r '.expiration_date')
-          
+          sudo docker run --entrypoint flexctl \
+            -v "$(pwd)":/renew \
+            -v "$(pwd)":/registration \
+            -u $UID mulesoft/flex-gateway \
+            registration renew \
+            --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
+            --environment=2c6f18bb-03e2-4874-a489-7216df5b5bc2 \
+            --output-directory=/renew \
+            /registration/registration.yaml
+                      
 
       
