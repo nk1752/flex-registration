@@ -49,4 +49,4 @@ jobs:
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |      
-          jq '.expiration_date' reg-time.json | jq '.[:8]'
+          jq '.expiration_date[:10]' reg-time.json
