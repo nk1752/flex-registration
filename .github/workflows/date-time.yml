@@ -18,7 +18,10 @@ jobs:
     steps:
       - name: get date and time
         run: |
-          echo {"expiration_date":"2025-09-25 19:27:53 +0000 UTC"} > reg-time
-          echo "reg time is: $reg-time" 
+          reg-time = date -u +"%Y-%m-%d %H:%M:%S %Z"
+          echo "The current date and time is $(reg-time)."
+
+          sleep 20
+          
           current-time = date -u +"%Y-%m-%d %H:%M:%S %Z"
           echo "The current date and time is $(current-time)."
