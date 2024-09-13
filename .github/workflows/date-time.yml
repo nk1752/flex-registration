@@ -48,8 +48,10 @@ jobs:
           
       # query for expiration_date and put it in a variable
       - name: get expiration date
-        run: |      
-          exp-date=$(jq '.expiration_date' reg-time.json)
+        run: |    
+          jq '.expiration_date' reg-time.json > exp-date.json
+        
+          cat exp-date.json
 
           
 
