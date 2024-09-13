@@ -51,7 +51,7 @@ jobs:
         run: |    
           jq '.expiration_date' reg-time.json > exp-date.json
         
-          cat exp-date.json
+          date -d $(cat exp-date.json) +%s
 
           
 
