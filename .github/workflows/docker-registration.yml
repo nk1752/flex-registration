@@ -89,6 +89,8 @@ jobs:
       - name: push to Artifactory
         run: |
           cat temp/registration.yaml
+          # zip registration.yaml
+          cd temp
           zip -r registration.zip registration.yaml
 
       - name: wait
