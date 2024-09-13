@@ -113,6 +113,10 @@ jobs:
             --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
             --output-directory=/renew \
             /registration/registration.yaml
+
+      - name: list files
+        run: |
+          ls -l
                       
 
       
