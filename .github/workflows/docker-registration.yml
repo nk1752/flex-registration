@@ -71,7 +71,7 @@ jobs:
 
       - name: obtain flexctl
         run: |
-          sudo run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/bin/flexctl > flexctl
+          sudo docker run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/bin/flexctl > flexctl
           chmod +x flexctl
           sudo docker run --rm --entrypoint cat mulesoft/flex-gateway /usr/local/lib/libdw_parser.so > libdw_parser.so
           export LD_LIBRARY_PATH="$(PWD)"
@@ -79,7 +79,7 @@ jobs:
       - name: register
         run: |
           ./flexctl \
-            -v "$(pwd)/temp":/registration -u $UID mulesoft/flex-gateway \
+            -v "$(pwd)":/registration -u $UID mulesoft/flex-gateway \
             registration create \
             --client-id=b95726291f564ae2942ac2c4ecc46311 \
             --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
@@ -95,9 +95,8 @@ jobs:
 
       - name: push to Artifactory
         run: |
-          cat temp/registration.yaml
+          cat registration.yaml
           # zip registration.yaml
-          cd temp
           zip -r registration.zip registration.yaml
 
       - name: wait
