@@ -49,11 +49,9 @@ jobs:
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |      
-          jq '.expiration_date' reg-time.json
+          exp-date=$(jq '.expiration_date' reg-time.json)
 
-          jq -r '.expiration_date' reg-time.json
-
-          exp-date=read << jq '.expiration_date' reg-time.json 
+          
 
 
           
