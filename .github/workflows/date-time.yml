@@ -68,7 +68,7 @@ jobs:
         run: |
           echo "id=${{ env.id }}"
           echo "name=${{ env.name }}"
-          q1="$(\"id\":=${{ env.id }})"
+          q1=$("\"id\":=${{ env.id }}")
           echo $q1
 
       - name: build new json file
