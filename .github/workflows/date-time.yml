@@ -67,12 +67,13 @@ jobs:
           echo "id=$id"
           echo "name=$name"
           
-          echo "id=$id" > str
-          echo "str=$str"
+          # { "id": 1, "name": "nadeem" }
+          echo "q1=$(\"id\":$id)" >> $GITHUB_ENV
+          echo "str=${{ env.q1 }}"
 
           echo {} > nk.json
           jq . nk.json
-          jq '. += {$str}' nk.json > nk-new.json
+          jq '. += {${{ env.q1 }}}' nk.json > nk-new.json
           jq '.' nk-new.json
         
           
