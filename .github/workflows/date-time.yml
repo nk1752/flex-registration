@@ -66,9 +66,10 @@ jobs:
           name="nadeem"
           echo "id=$id"
           echo "name=$name"
+          str = "\"id\":$id,\"name\":\"$name\""
           echo {} > nk.json
           jq . nk.json
-          jq '. += {"id": $(id), "name": "$(name)"}' nk.json > nk-new.json
+          jq '. += {str}' nk.json > nk-new.json
           jq '.' nk-new.json
         
           
