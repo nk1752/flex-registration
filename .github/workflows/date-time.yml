@@ -62,11 +62,9 @@ jobs:
 
       - name: build new json file
         run: |
-            echo "{"current_time\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\", \
-                  "expiration_date\": \"$(jq -r '.expiration_date' reg-time.json)\"}" > new-time.json
-
-            jq . new-time.json
-
+            echo {} > nk.json
+            jq '. += {"id": 1,"name":"nadeem"}' nk.json > nk.json
+            jq '.' nk.json
           
 
 
