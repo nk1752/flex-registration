@@ -67,7 +67,7 @@ jobs:
           echo "id=$id"
           echo "name=$name"
           
-          str=$("\"id\": $id")
+          echo "id=$id" > str
           echo "str=$str"
 
           echo {} > nk.json
