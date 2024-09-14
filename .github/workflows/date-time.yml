@@ -60,14 +60,12 @@ jobs:
         
           date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
 
-          - name: build new json file
-            run: |
-              echo "{
-                \"current_time\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\",
-                \"expiration_date\": \"$(jq -r '.expiration_date' reg-time.json)\"
-              }" > new-time.json
+      - name: build new json file
+        run: |
+            echo "{"current_time\": \"$(date -u +"%Y-%m-%dT%H:%M:%SZ")\", \
+                  "expiration_date\": \"$(jq -r '.expiration_date' reg-time.json)\"}" > new-time.json
 
-              jq . new-time.json
+            jq . new-time.json
 
           
 
