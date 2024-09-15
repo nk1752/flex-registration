@@ -51,7 +51,7 @@ jobs:
           jq . config.json
 
           BG="obj45"
-          check=$(jq '.$BG' config.json)
+          check=$(jq --arg bg $BG'.[$bg]' config.json)
           echo $check
 
           
