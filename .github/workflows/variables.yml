@@ -45,6 +45,7 @@ jobs:
           jq . test.json
 
           jq '. += {"name": "Inaaya"}' test.json > test.json
+          jq '. += {"name": $E2}' test.json > test.json
 
           jq . test.json
           
