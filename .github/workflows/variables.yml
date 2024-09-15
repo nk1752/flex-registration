@@ -55,7 +55,7 @@ jobs:
           echo $check
 
           # check for true or false in bash
-          if [[ "$check" == null ]]; then
+          if [[ "$(jq '.obj45' config.json)" == null ]]; then
             echo "Not found"
           else
             echo "found"
