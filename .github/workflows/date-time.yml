@@ -35,11 +35,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: get date and time (json)
+      - name: get date and time
         run: |
           # get current date and time in UTC
-          test-date=$(date -u +"%Y-%m-%d")
-          echo "test-date=$test-date"
+          test-date="$(date -u +"%Y-%m-%d")"
+          echo test-date=$test-date
           
       # query for expiration_date and put it in a variable
       - name: get expiration date
