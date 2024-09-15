@@ -51,11 +51,11 @@ jobs:
           jq . config.json
 
           
-          check=$(jq -r '.obj21' config.json)
+          check=$(jq '.obj21' config.json)
           echo $check
 
           # check for true or false in bash
-          if [[ "$check" == "" ]]; then
+          if [[ "$check" == null ]]; then
             echo "Not found"
           else
             echo "found"
