@@ -50,13 +50,20 @@ jobs:
           echo "$(jq --arg name "${{ env.NAME }}" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
           jq . config.json
 
-          echo "$(jq .obj21 config.json)"
+          check="$(jq .obj21 config.json)"
+          echo $check
 
           # if string not null(null-empty)
-          if [ -n "$(jq .obj21 config.json)" ]; then
+          if [ -n $check ]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
+          fi
+
+          if [ false ]; then
+            echo "TRUE"
+          else
+            echo "FALSE"
           fi
 
 
