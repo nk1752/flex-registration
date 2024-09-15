@@ -32,10 +32,14 @@ jobs:
         run: echo $DYNAMIC_VAR
 
       - name: Set dynamic variable 1
-        run: echo "DID=5" >> $GITHUB_ENV
+        run: |
+          echo "DID=5" >> $GITHUB_ENV
+          echo "DNAME=nadeem" >> $GITHUB_ENV
           
       - name: display dynamic variable 1
-        run: echo $DID    
+        run: |
+          echo $DID    
+          echo $DNAME
           
       - name: build json file
         run: |
@@ -45,6 +49,7 @@ jobs:
 
           jq '. += {"name": "Inaaya"}' test.json > tmp.json
           ls -l
+          mv ./tmp.json ./test.json
           jq . tmp.json
           jq . test.json
           
