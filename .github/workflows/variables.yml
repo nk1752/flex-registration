@@ -7,9 +7,6 @@ name: env -> variables
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -39,9 +36,7 @@ jobs:
           echo NAME2 --> $NAME2
           
       - name: build json file
-        
         run: |
-      
           echo "{}" > config.json
 
           echo "$(jq --arg name "$NAME1" --arg env "$ENV" '. += { "obj1":{"name": $name, "id": 1, "env": $env} }' config.json)" > config.json
@@ -61,27 +56,8 @@ jobs:
             echo "found"
           fi
 
-          BG="obj23"
-          echo checking for $BG
-          check=$(jq --arg bg "$BG" '.[$bg]' config.json)
-          echo $check
-          # check for true or false in bash
-          if [[ "$check" == null ]]; then
-            echo "Not found"
-          else
-            echo "found"
-          fi
-
-          BG="obj1"
-          echo checking for $BG
-          check=$(jq --arg bg "$BG" '.[$bg]' config.json)
-          echo $check
-          # check for true or false in bash
-          if [[ "$check" == null ]]; then
-            echo "Not found"
-          else
-            echo "found"
-          fi
+      - name: days
+        run: |
 
           
 

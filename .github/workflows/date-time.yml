@@ -7,6 +7,9 @@ name: date-time
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -32,52 +35,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: get date and time
+      - name: get date and time (json)
         run: |
           # get current date and time in UTC
-          date -u
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > test-time.json
-          cat test-time.json
-          
-
-      - name: parse json file for current time
-        run: |
-          ls -l
-          jq '.' reg-time.json
+          test-date=$(date -u +"%Y-%m-%d")
+          echo "test-date=$test-date"
           
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |    
-          jq '.expiration_date[:10]' reg-time.json > exp-date.json
-
-          jq '.' exp-date.json
-
-          echo "exp-date=$(cat exp-date.json)" >> $GITHUB_ENV
-          echo "env: ${{ env.exp-date }}"
-
-          echo ""
-
-          date -d "2024-04-06" "+%s"
+          reg-date=$(jq '.expiration_date[:10]' reg-time.json)
+          echo "reg-date=$reg-date"
         
-          date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
+          reg-days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
+          test-days=$(date -d "$test-date" "+%s")
 
-      - name: build new json file
-        shell: bash
-        run: |
-          echo {} > nk.json
-          jq . nk.json
-          jq '. += {"id":1, "name": "Nadeem"}' nk.json > nk-new.json
-          jq '.' nk-new.json
-          
+          echo "reg-days=$reg-days"
+          echo "test-days=$test-days"
 
-        # { "id": 1, "name": "nadeem" }
-      - name: build variable
-        shell: bash
-        run: |
-          echo "id=${{ env.id }}"
-          echo "name=${{ env.name }}"
-          q1=$("\"id\":=${{ env.id }}")
-          echo $q1
+          remaining-days=$((reg-days - test-days))
+          echo "remaining-days=$remaining-days"
 
       
           
