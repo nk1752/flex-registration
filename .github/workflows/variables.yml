@@ -46,8 +46,8 @@ jobs:
       
           echo "{}" > config.json
 
-          echo "$(jq --arg name "$NAME1" '. += {"name1": $name}' config.json)" > config.json
-          echo "$(jq --arg name "$NAME2" '. += {"name2": $name}' config.json)" > config.json
+          jq --arg name "$NAME1" '. += {"name1": $name}' config.json > config.json
+          jq --arg name "$NAME2" '. += {"name2": $name}' config.json > config.json
           jq . config.json
 
 
