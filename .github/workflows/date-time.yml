@@ -38,8 +38,13 @@ jobs:
       - name: get date and time
         run: |
           # get current date and time in UTC
-          date -u "+%F"
-          date -d "$(date -u "+%F")" "+%s"
+          date --utc "+%F"
+          date --date "$(date -utc "+%F")" +%s
+
+          d1=$(date -d "$(date -u +"%F")" "+%s")
+          d2=$(date -d "9-12-2024" "+%s")
+          echo diff=$(( (d2-d1) / 86400 ))
+
 
           echo "test-days=$(date -d "$(date -u +"%F")" "+%s")" >> $GITHUB_ENV
           echo $test-days
