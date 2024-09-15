@@ -25,6 +25,11 @@ jobs:
       id-token: write # read|write|none
       
     steps:
+      - name: Set dynamic variable
+        run: echo "DYNAMIC_VAR=dynamic value" >> $GITHUB_ENV
+
+      - name: Use dynamic variable
+        run: echo $DYNAMIC_VAR
 
       - name: Set dynamic variable
         run: |
@@ -39,6 +44,7 @@ jobs:
           jq . test.json
 
           jq '. += {"name": "Inaaya"}' test.json > new-json.json
-
+          mv new-json.json test.json
           jq . new-json.json
+          jq . test.json
           
