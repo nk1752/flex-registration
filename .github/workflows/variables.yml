@@ -52,8 +52,6 @@ jobs:
 
           jq .obj2 config.json
 
-          echo obj21 --> $(jq .obj21 config.json)
-
           if ($(jq .obj21 config.json)); then
             echo "obj21 does exists"
           else
