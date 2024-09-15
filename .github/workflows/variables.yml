@@ -54,8 +54,10 @@ jobs:
           check=$(jq '.obj45' config.json)
           echo $check
 
+          bg="obj2"
+
           # check for true or false in bash
-          if [[ "$(jq '.obj45' config.json)" == null ]]; then
+          if [[ "$(jq --arg bg "$bg" '.$bg' config.json)" == null ]]; then
             echo "Not found"
           else
             echo "found"
