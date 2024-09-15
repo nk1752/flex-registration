@@ -52,7 +52,13 @@ jobs:
 
           
 
-          if (1==2); then
+          if [[1==2]]; then
+            echo "obj21 does exists"
+          else
+            echo "obj21 does NOT exist"
+          fi
+
+          if [[1==1]]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
