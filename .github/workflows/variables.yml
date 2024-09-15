@@ -54,7 +54,7 @@ jobs:
 
           echo "obj21 --> $(jq .obj21 config.json)"
 
-          if ($(jq .obj2 config.json) != ""); then
+          if ($(jq .obj2.name config.json) != ""); then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
