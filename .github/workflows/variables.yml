@@ -13,7 +13,7 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  RENEW: false
+  RENEW: true
   ID: 1
   NAME: "rashida"
   BG: "blue"
@@ -51,6 +51,13 @@ jobs:
           jq . config.json
 
           
+          # check for true or false in bash
+          if [[ "$RENEW" -eq true ]]; then
+            echo "RENEW is true"
+          else
+            echo "RENEW is false"
+          fi
+
           # check for true or false in bash
           if [[ "$RENEW" -eq "true" ]]; then
             echo "RENEW is true"
