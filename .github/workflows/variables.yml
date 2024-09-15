@@ -26,17 +26,9 @@ jobs:
       
     steps:
 
-      - name: 'Check jq'
-        # language=sh
-        run: |
-          which jq
-          jq --version
+      - name: Set dynamic variable
+        run: echo "DYNAMIC_VAR=dynamic value" >> $GITHUB_ENV
 
-      - name: build variables
-        run: |
-          echo " q1=\"id\"=${{ env.ID }} " >> $GITHUB_ENV
-          echo "q2=query2" >> $GITHUB_ENV
-
-          echo "q1 -->: $q1"
-          echo "q2 -->: $q2"
+      - name: Use dynamic variable
+        run: echo $DYNAMIC_VAR
           
