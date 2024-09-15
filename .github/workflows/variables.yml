@@ -14,11 +14,11 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   RENEW: false
-  id: 1
-  name: "nadeem"
+  ID: 1
+  NAME: "nadeem"
 
 jobs:
-  DateTime:
+  Variables:
     runs-on: ubuntu-latest
     permissions:
       contents: read # read|write|none
@@ -34,10 +34,8 @@ jobs:
 
       - name: build variables
         run: |
-          echo "q1=\"id=$id, \"name\"=$name" >> $GITHUB_ENV
-          echo "RENEW=$RENEW" >> $GITHUB_ENV
+          echo " q1=\"id\"=$ID "
+          echo "RENEW=$ID $NAME" >> $GITHUB_ENV
 
-          echo "env id: ${{ env.id }}"
-          echo "env name: ${{ env.name }}"
           echo "env renew: ${{ env.RENEW }}"
-          echo "env q1: ${{ env.q1 }}"
+          
