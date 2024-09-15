@@ -61,12 +61,16 @@ jobs:
           echo "exp-date=$(cat exp-date.json)" >> $GITHUB_ENV
           echo "env: ${{ env.exp-date }}"
 
-          echo ""
-
           date -d "$(date -u "+%F")" "+%s"
           cdays=$(date -d "$(date -u +"%F")" "+%s")
           edays=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
-          echo ddiff=$(( (edays-cdays) / 86400 ))
+          days_remaing=$(( (edays-cdays) / 86400 ))
+
+          if [[ "$days_remaing" < 30 ]]; then
+            echo "expired"
+          else
+            echo "not expired"
+          fi
 
 
       
