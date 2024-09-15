@@ -62,6 +62,15 @@ jobs:
         
           date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
 
+      - name: build new json file
+        shell: bash
+        run: |
+          echo {} > nk.json
+          jq . nk.json
+          jq '. += {"id":1, "name": "Nadeem"}' nk.json > nk-new.json
+          jq '.' nk-new.json
+          
+
         # { "id": 1, "name": "nadeem" }
       - name: build variable
         shell: bash
@@ -71,14 +80,7 @@ jobs:
           q1=$("\"id\":=${{ env.id }}")
           echo $q1
 
-      - name: build new json file
-        shell: bash
-        run: |
-          echo {} > nk.json
-          jq . nk.json
-          jq '. += {"id":1, "name": "Nadeem"}' nk.json > nk-new.json
-          jq '.' nk-new.json
-        
+      
           
 
 
