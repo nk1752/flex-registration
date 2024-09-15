@@ -39,4 +39,5 @@ jobs:
           echo $DYNAMIC_VAR
           echo $DYNAMIC_VAR_1
           echo $DYNAMIC_VAR_3
+          echo $DYNAMIC_VAR_4
           
