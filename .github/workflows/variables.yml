@@ -33,21 +33,21 @@ jobs:
 
       - name: Set dynamic variable 1
         run: |
-          echo "DID=5" >> $GITHUB_ENV
-          echo "DNAME=nadeem" >> $GITHUB_ENV
+          echo "NAME1=inaaya" >> $GITHUB_ENV
+          echo "NAME2=nadeem" >> $GITHUB_ENV
           
       - name: display dynamic variable 1
         run: |
-          echo DID --> $DID    
-          echo DNAME --> $DNAME
+          echo NAME1 --> $NAME1    
+          echo NAME2 --> $NAME2
           
       - name: build json file
         run: |
       
           echo "{}" > config.json
 
-          echo "$(jq '. += {"name1": "Inaaya"}' config.json)" > config.json
-          echo "$(jq '. += {"name2": "Nadeem"}' config.json)" > config.json
+          echo "$(jq --arg name "$NAME1" '. += {"name1": $name}' config.json)" > config.json
+          echo "$(jq --arg name "$NAME2" '. += {"name2": $name}' config.json)" > config.json
           jq . config.json
 
 
