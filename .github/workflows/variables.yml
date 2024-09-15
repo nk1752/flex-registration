@@ -51,14 +51,14 @@ jobs:
           jq . config.json
 
           
-          check=$(jq '.obj2' config.json)
+          check=$(jq -r '.obj2' config.json)
           echo $check
 
           # check for true or false in bash
-          if [[ "$check" == null ]]; then
-            echo "RENEW is true"
+          if [[ "$check" == "" ]]; then
+            echo "Not found"
           else
-            echo "RENEW is false"
+            echo "found"
           fi
 
           
