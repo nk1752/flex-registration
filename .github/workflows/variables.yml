@@ -51,7 +51,7 @@ jobs:
           jq . config.json
 
           
-          check=$(jq '.obj2' config.json)
+          check=$(jq '.obj45' config.json)
           echo $check
 
           # check for true or false in bash
