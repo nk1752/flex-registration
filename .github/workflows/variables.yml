@@ -38,8 +38,8 @@ jobs:
           
       - name: display dynamic variable 1
         run: |
-          echo $DID    
-          echo $DNAME
+          echo "DID -->" $DID    
+          echo "DNAME --> $DNAME
           
       - name: build json file
         run: |
@@ -47,9 +47,8 @@ jobs:
           echo {} > test.json
           jq . test.json
 
-          jq '. += {"name": "Inaaya"}' test.json > tmp.json
-          ls -l
-          
-          jq . tmp.json > test.json
+          jq '. += {"name": "Inaaya"}' test.json > test.json
+
           jq . test.json
+          
           
