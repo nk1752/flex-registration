@@ -52,10 +52,10 @@ jobs:
 
           jq .obj2 config.json
 
-          if (jq .obj21 config.json); then
-            echo "obj21 exists"
+          if ("$(jq .obj21 config.json)" == "null"; then
+            echo "obj21 DOES NOT exist"
           else
-            echo "obj21 does not exist"
+            echo "obj21 does exists"
           fi
 
 
