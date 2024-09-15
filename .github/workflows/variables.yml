@@ -54,13 +54,13 @@ jobs:
           echo $check
 
           # if string not null(null-empty)
-          if [ -n $check ]; then
+          if [ -z $check ]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
           fi
 
-          if [ false ]; then
+          if [ 1 ]; then
             echo "TRUE"
           else
             echo "FALSE"
