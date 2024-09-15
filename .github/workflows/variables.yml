@@ -37,6 +37,6 @@ jobs:
           echo " q1=\"id\"=${{ env.ID }} " >> $GITHUB_ENV
           echo "q2=query2" >> $GITHUB_ENV
 
-          echo "q1 -->: ${{ env.q1 }}"
-          echo "q2 -->: ${{ env.q2 }}"
+          echo "q1 -->: $q1"
+          echo "q2 -->: $q2"
           
