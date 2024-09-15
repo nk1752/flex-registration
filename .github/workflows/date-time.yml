@@ -43,7 +43,7 @@ jobs:
           cat test-time.json
 
           echo "test-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-          date -d "$test-date" "+%s"
+          date -d $test-date "+%s"
           
 
       - name: parse json file for current time
