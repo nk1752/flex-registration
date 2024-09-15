@@ -40,9 +40,9 @@ jobs:
       
           echo "{}" > config.json
 
-          echo "$(jq --arg name "$NAME1" '. += {"name1": $name}' config.json)" > config.json
-          echo "$(jq --arg name "$NAME2" '. += {"name2": $name}' config.json)" > config.json
-          echo "$(jq --arg name "${{ env.NAME }}" '. += {"name3": $name}' config.json)" > config.json
+          echo "$(jq --arg name "$NAME1" '. += {"obj1":{"name": $name}}' config.json)" > config.json
+          echo "$(jq --arg name "$NAME2" '. += {"obj2":{name": $name}}' config.json)" > config.json
+          echo "$(jq --arg name "${{ env.NAME }}" '. += {"obj3":{name": $name}}' config.json)" > config.json
           jq . config.json
 
 
