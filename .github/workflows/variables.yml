@@ -32,6 +32,7 @@ jobs:
           echo "DYNAMIC_VAR_1=dynamic value 1" >> $GITHUB_ENV
           echo "DYNAMIC_VAR_3=${{ env.NAME }}" >> $GITHUB_ENV
           echo "E1=\"id\": ${{ env.ID }}" >> $GITHUB_ENV
+          echo "E2=\"${{ env.NAME }}\"" >> $GITHUB_ENV
           
 
       - name: Use dynamic variable
@@ -40,13 +41,13 @@ jobs:
           echo $DYNAMIC_VAR_1
           echo $DYNAMIC_VAR_3
           echo $E1
+          echo $E2
 
-      - name: build json
-        run: |
+      
           echo {} > test.json
           jq . test.json
 
-          jq '. += {$E1}' test.json > test.json
+          jq '. += {"name": $E2}' test.json > test.json
 
           jq . test.json
           
