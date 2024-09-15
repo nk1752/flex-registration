@@ -52,7 +52,7 @@ jobs:
 
           jq .obj2 config.json
 
-          if [[ -z "$(jq .obj21 config.json)" ]]; then
+          if [[ -z "$(jq .obj2 config.json)" ]]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
