@@ -50,8 +50,8 @@ jobs:
           echo "$(jq --arg name "${{ env.NAME }}" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
           jq . config.json
 
-          BG="obj2"
-          check=$(jq '.obj45' config.json)
+          BG="obj45"
+          check=$(jq '.$BG' config.json)
           echo $check
 
           
