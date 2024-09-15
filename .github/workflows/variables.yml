@@ -52,7 +52,7 @@ jobs:
 
           
 
-          if [[ jq .obj2 config.json ]]; then
+          if [[ any(jq .obj2 config.json) ]]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
