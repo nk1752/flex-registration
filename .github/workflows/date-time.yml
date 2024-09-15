@@ -39,7 +39,7 @@ jobs:
         run: |
           # get current date and time in UTC
           date -u
-          test-days="$(date -d "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" "+%s")"
+          echo "test-days=$(date -d "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" "+%s")" >> $GITHUB_ENV
           echo test-days=$test-days
           
       - name: parse json file for current time
