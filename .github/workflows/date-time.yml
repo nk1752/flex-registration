@@ -38,9 +38,12 @@ jobs:
       - name: get date and time
         run: |
           # get current date and time in UTC
-          echo "test-time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
+          date --date $(date -u ) "+%Y-%m-%dT%H:%M:%SZ"
+          
 
-          date -d $test-time "+%s"
+          echo "test-time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
+          echo $test-time
+          date --date $test-time "+%s"
 
           echo "test-days=$(date -d "$(test-time)" "+%s")" >> $GITHUB_ENV
           echo $test-days
