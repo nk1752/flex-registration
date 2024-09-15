@@ -42,7 +42,7 @@ jobs:
           date --date "$(date -utc "+%F")" +%s
 
           d1=$(date -d "$(date -u +"%F")" "+%s")
-          d2=$(date -d "9-12-2024" "+%s")
+          d2=$(date -d "2024-07-15" "+%s")
           echo diff=$(( (d2-d1) / 86400 ))
 
 
