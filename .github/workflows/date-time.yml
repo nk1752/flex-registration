@@ -43,11 +43,7 @@ jobs:
 
           d1=$(date -d "$(date -u +"%F")" "+%s")
           d2=$(date -d "2024-07-15" "+%s")
-          echo diff=$(( (d2-d1) / 86400 ))
-
-
-          echo "test-days=$(date -d "$(date -u +"%F")" "+%s")" >> $GITHUB_ENV
-          echo $test-days
+          echo diff=$(( (d1-d2) / 86400 ))
 
           
       - name: parse json file for current time
@@ -68,8 +64,9 @@ jobs:
           echo ""
 
           date -d "$(date -u "+%F")" "+%s"
-        
-          date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
+          cdays=$(date -d "$(date -u +"%F")" "+%s")
+          edays=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
+          echo ddiff=$(( (edays-cdays) / 86400 ))
 
 
       
