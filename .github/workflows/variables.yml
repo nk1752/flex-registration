@@ -52,9 +52,10 @@ jobs:
 
           
           check=$(jq '.obj2' config.json)
+          echo $check
 
           # check for true or false in bash
-          if [[ "$check" == "null" ]]; then
+          if [[ "$check" == null ]]; then
             echo "RENEW is true"
           else
             echo "RENEW is false"
