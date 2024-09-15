@@ -34,9 +34,6 @@ jobs:
           echo "E1=\"id\": ${{ env.ID }}" >> $GITHUB_ENV
           echo "E2=\"${{ env.NAME }}\"" >> $GITHUB_ENV
           
-
-      - name: Use dynamic variable
-        run: |
           echo $DYNAMIC_VAR
           echo $DYNAMIC_VAR_1
           echo $DYNAMIC_VAR_3
@@ -47,7 +44,7 @@ jobs:
           echo {} > test.json
           jq . test.json
 
-          jq '. += {"name": $E2}' test.json > test.json
+          jq '. += {"name": "Inaaya"}' test.json > test.json
 
           jq . test.json
           
