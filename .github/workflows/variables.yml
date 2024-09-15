@@ -36,15 +36,15 @@ jobs:
           echo "DID=5" >> $GITHUB_ENV
           echo "DNAME=khalid" >> $GITHUB_ENV
           
-          echo "DID: $DID"
-          echo "DNAME: $DNAME"
+          echo $DID
+          echo $DNAME
 
       
           echo {} > test.json
           jq . test.json
 
-          jq '. += {"name": "Inaaya"}' test.json > new-json.json
-          mv new-json.json test.json
-          jq . new-json.json
+          jq '. += {"name": "Inaaya"}' test.json > tmp.json
+          
+          jq . tmp.json
           jq . test.json
           
