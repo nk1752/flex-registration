@@ -30,9 +30,12 @@ jobs:
         run: |
           echo "DYNAMIC_VAR=dynamic value" >> $GITHUB_ENV
           echo "DYNAMIC_VAR_1=dynamic value 1" >> $GITHUB_ENV
+          echo "DYNAMIC_VAR_3=${{ env.NAME}}" >> $GITHUB_ENV
+          
 
       - name: Use dynamic variable
         run: |
           echo $DYNAMIC_VAR
           echo $DYNAMIC_VAR_1
+          echo $DYNAMIC_VAR_3
           
