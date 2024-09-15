@@ -51,15 +51,10 @@ jobs:
           jq . config.json
 
           
-          # check for true or false in bash
-          if [[ "$RENEW" -eq true ]]; then
-            echo "RENEW is true"
-          else
-            echo "RENEW is false"
-          fi
+          check=$(jq '.obj2' config.json)
 
           # check for true or false in bash
-          if [[ "$RENEW" == "true" ]]; then
+          if [[ "$check" == "null" ]]; then
             echo "RENEW is true"
           else
             echo "RENEW is false"
