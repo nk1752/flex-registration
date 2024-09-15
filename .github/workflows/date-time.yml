@@ -38,23 +38,32 @@ jobs:
       - name: get date and time
         run: |
           # get current date and time in UTC
-          echo "test-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-          echo test-date=$test-date
+          date -u
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > test-time.json
+          cat test-time.json
+          
+
+      - name: parse json file for current time
+        run: |
+          ls -l
+          jq '.' reg-time.json
           
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |    
-          reg-date=$(jq '.expiration_date[:10]' reg-time.json)
-          echo "reg-date=$reg-date"
+          jq '.expiration_date[:10]' reg-time.json > exp-date.json
+
+          jq '.' exp-date.json
+
+          echo "exp-date=$(cat exp-date.json)" >> $GITHUB_ENV
+          echo "env: ${{ env.exp-date }}"
+
+          echo ""
+
+          date -d "2024-04-06" "+%s"
         
-          reg-days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
-          test-days=$(date -d "$test-date" "+%s")
+          date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
 
-          echo "reg-days=$reg-days"
-          echo "test-days=$test-days"
-
-          remaining-days=$((reg-days - test-days))
-          echo "remaining-days=$remaining-days"
 
       
           
