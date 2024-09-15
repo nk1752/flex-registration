@@ -15,7 +15,7 @@ env:
   # Use docker.io for Docker Hub if empty
   RENEW: false
   ID: 1
-  NAME: "nadeem"
+  NAME: "rashida"
 
 jobs:
   Variables:
@@ -25,12 +25,6 @@ jobs:
       id-token: write # read|write|none
       
     steps:
-      - name: Set dynamic variable
-        run: echo "DYNAMIC_VAR=dynamic value" >> $GITHUB_ENV
-
-      - name: Use dynamic variable
-        run: echo $DYNAMIC_VAR
-
       - name: Set dynamic variable 1
         run: |
           echo "NAME1=inaaya" >> $GITHUB_ENV
@@ -46,8 +40,9 @@ jobs:
       
           echo "{}" > config.json
 
-          jq --arg name "$NAME1" '. += {"name1": $name}' config.json > config.json
-          jq --arg name "$NAME2" '. += {"name2": $name}' config.json > config.json
+          echo "$(jq --arg name "$NAME1" '. += {"name1": $name}' config.json)" > config.json
+          echo "$(jq --arg name "$NAME2" '. += {"name2": $name}' config.json)" > config.json
+          echo "$(jq --arg name "${{ env.NAME }}" '. += {"name3": $name}' config.json)" > config.json
           jq . config.json
 
 
