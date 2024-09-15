@@ -52,7 +52,11 @@ jobs:
 
           jq .obj2 config.json
 
-          jq .obj21 config.json
+          if (jq .obj21 config.json); then
+            echo "obj21 exists"
+          else
+            echo "obj21 does not exist"
+          fi
 
 
           
