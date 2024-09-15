@@ -47,9 +47,9 @@ jobs:
           echo {} > test.json
           jq . test.json
 
-          echo $(jq '. += {"name": "Inaaya"}' test.json) > test.json
+          echo "$(jq '. += {"name": "Inaaya"}' test.json)" > test.json
           jq . test.json
-          echo $(jq '. += {"name": "nadeem"}' test.json) > test.json
+          echo "$(jq '. += {"name": "nadeem"}' test.json)" > test.json
           jq . test.json
 
 
