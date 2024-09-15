@@ -44,12 +44,11 @@ jobs:
       - name: build json file
         run: |
       
-          echo {} > test.json
-          jq . test.json
+          echo "{}" > config.json
 
-          jq '. += {"name": "Inaaya"}' test.json > test.json
-          jq '. += {"name": "nadeem"}' test.json >> test.json
-          jq . test.json
+          echo "$(jq '. += {"url": "https://url.com"}' config.json)" > config.json
+          echo "$(jq '. += {"name": "a Name"}' config.json)" > config.json
+          jq . config.json
 
 
           
