@@ -48,7 +48,7 @@ jobs:
           jq . test.json
 
           jq '. += {"name": "Inaaya"}' test.json > temp1.json
-          jq . test.json
+          jq . temp1.json
           jq '. += {"name": "nadeem"}' temp1.json > temp2.json
           jq . temp2.json
 
