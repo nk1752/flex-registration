@@ -47,12 +47,12 @@ jobs:
           echo {} > test.json
           jq . test.json
 
-          jq '. += {"name": "Inaaya"}' test.json > temp.json
+          jq '. += {"name": "Inaaya"}' test.json > test.json
           cat temp.json > test.json
 
           jq . test.json
 
-          jq '. += {"name": "nadeem"}' test.json > temp.json
+          jq '. += {"name": "nadeem"}' test.json > test.json
           cat temp.json > test.json
 
           jq . test.json
