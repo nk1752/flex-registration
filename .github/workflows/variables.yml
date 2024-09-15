@@ -59,7 +59,7 @@ jobs:
           fi
 
           # check for true or false in bash
-          if [[ "$RENEW" -eq "true" ]]; then
+          if [[ "$RENEW" == "true" ]]; then
             echo "RENEW is true"
           else
             echo "RENEW is false"
