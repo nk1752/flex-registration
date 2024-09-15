@@ -16,9 +16,12 @@ env:
   RENEW: false
   ID: 1
   NAME: "rashida"
+  BG: "blue"
+  ENV: "dev"
 
 jobs:
   Variables:
+    
     runs-on: ubuntu-latest
     permissions:
       contents: read # read|write|none
@@ -36,12 +39,13 @@ jobs:
           echo NAME2 --> $NAME2
           
       - name: build json file
-        if: ${{ env.RENEW == 'true' }}
+        
         run: |
       
           echo "{}" > config.json
 
-          echo "$(jq --arg name "$NAME1" '. += { "obj1":{"name": $name, "id": 1} }' config.json)" > config.json
+          echo "$(jq --arg name "$NAME1", --arg env "$ENV" '. += { "obj1":{"name": $name, "id": 1, "env": $env} }' config.json)" > config.json
+              
           echo "$(jq --arg name "$NAME2" '. += { "obj2":{"name": $name, "id": 2} }' config.json)" > config.json
           echo "$(jq --arg name "${{ env.NAME }}" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
           jq . config.json
