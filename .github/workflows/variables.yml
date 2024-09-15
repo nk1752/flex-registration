@@ -51,9 +51,31 @@ jobs:
           jq . config.json
 
           BG="obj2"
+          echo checking for $BG
           check=$(jq --arg bg "$BG" '.[$bg]' config.json)
           echo $check
+          # check for true or false in bash
+          if [[ "$check" == null ]]; then
+            echo "Not found"
+          else
+            echo "found"
+          fi
 
+          BG="obj23"
+          echo checking for $BG
+          check=$(jq --arg bg "$BG" '.[$bg]' config.json)
+          echo $check
+          # check for true or false in bash
+          if [[ "$check" == null ]]; then
+            echo "Not found"
+          else
+            echo "found"
+          fi
+
+          BG="obj1"
+          echo checking for $BG
+          check=$(jq --arg bg "$BG" '.[$bg]' config.json)
+          echo $check
           # check for true or false in bash
           if [[ "$check" == null ]]; then
             echo "Not found"
