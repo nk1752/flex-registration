@@ -35,7 +35,7 @@ jobs:
       - name: build variables
         run: |
           echo " q1=\"id\"=${{ env.ID }} " >> $GITHUB_ENV
-          echo " q2=${{ env.NAME }} " >> $GITHUB_ENV
+          echo "q2=query2" >> $GITHUB_ENV
 
           echo "q1 -->: ${{ env.q1 }}"
           echo "q2 -->: ${{ env.q2 }}"
