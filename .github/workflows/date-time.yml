@@ -40,13 +40,8 @@ jobs:
           # get current date and time in UTC
           date -u "+%F"
           date -d "$(date -u "+%F")" "+%s"
-          
 
-          echo "test-time=$(date -u +"%F")" >> $GITHUB_ENV
-          echo $test-time
-          date --date $test-time "+%s"
-
-          echo "test-days=$(date -d "$(test-time)" "+%s")" >> $GITHUB_ENV
+          echo "test-days=$(date -d "$(date -u +"%F")" "+%s")" >> $GITHUB_ENV
           echo $test-days
 
           
@@ -67,7 +62,7 @@ jobs:
 
           echo ""
 
-          date -d "2024-04-06" "+%s"
+          date -d "$(date -u "+%F")" "+%s"
         
           date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s"
 
