@@ -52,5 +52,13 @@ jobs:
 
           jq . temp.json
           jq . test.json
+
+          jq '. += {"name": "nadeem"}' test.json > temp.json
+          cat temp.json > test.json
+
+          jq . temp.json
+          jq . test.json
+
+
           
           
