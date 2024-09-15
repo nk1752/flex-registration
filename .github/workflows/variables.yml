@@ -49,7 +49,7 @@ jobs:
 
           jq '. += {"name": "Inaaya"}' test.json > tmp.json
           ls -l
-          mv ./tmp.json ./test.json
-          jq . tmp.json
+          
+          jq . tmp.json > test.json
           jq . test.json
           
