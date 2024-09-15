@@ -39,7 +39,7 @@ jobs:
       - name: display dynamic variable 1
         run: |
           echo "DID -->" $DID    
-          echo "DNAME --> $DNAME
+          echo "DNAME -->" $DNAME
           
       - name: build json file
         run: |
