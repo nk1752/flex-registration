@@ -54,8 +54,6 @@ jobs:
           check=$(jq --arg bg "$BG" '.[$bg]' config.json)
           echo $check
 
-          
-
           # check for true or false in bash
           if [[ "$check" == null ]]; then
             echo "Not found"
