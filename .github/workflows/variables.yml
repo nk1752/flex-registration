@@ -50,14 +50,14 @@ jobs:
           echo "$(jq --arg name "${{ env.NAME }}" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
           jq . config.json
 
-          
+          BG="obj2"
           check=$(jq '.obj45' config.json)
           echo $check
 
-          BG="obj2"
+          
 
           # check for true or false in bash
-          if [[ "$(jq --arg bg $BG '.[$bg]' config.json)" == null ]]; then
+          if [[ "$check" == null ]]; then
             echo "Not found"
           else
             echo "found"
