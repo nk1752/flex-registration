@@ -52,7 +52,7 @@ jobs:
 
           
 
-          if [[ 1 ]]; then
+          if [[ 0 ]]; then
             echo "obj21 does exists"
           else
             echo "obj21 does NOT exist"
