@@ -46,8 +46,8 @@ jobs:
       
           echo "{}" > config.json
 
-          echo "$(jq '. += {"url": "https://url.com"}' config.json)" > config.json
-          echo "$(jq '. += {"name": "a Name"}' config.json)" > config.json
+          echo "$(jq '. += {"name1": "Inaaya"}' config.json)" > config.json
+          echo "$(jq '. += {"name2": "Nadeem"}' config.json)" > config.json
           jq . config.json
 
 
