@@ -52,23 +52,13 @@ jobs:
 
           
           # check for true or false in bash
-          if [[ $RENEW == "true" ]] then
+          if [[ "$RENEW" -eq "true" ]]; then
             echo "RENEW is true"
           else
             echo "RENEW is false"
           fi
 
-          if [[1 eq 2]] then
-            echo "obj21 does exists"
-          else
-            echo "obj21 does NOT exist"
-          fi
-
-          if [[1 eq 1]] then
-            echo "obj21 does exists"
-          else
-            echo "obj21 does NOT exist"
-          fi
+          
 
          
 
