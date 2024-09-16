@@ -6,7 +6,15 @@ name: register & store
 # documentation.
 
 on:
-  workflow_dispatch:
+  # callable workflow
+  workflow_call:
+    inputs:
+      bg:
+        required: true
+        type: string
+      env:
+        required: true
+        type: string
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -65,6 +73,7 @@ jobs:
 
       - name: register
         run: |
+          gw-name=${{ inputs.bg }}-${{ inputs.env }}
           sudo docker run --entrypoint flexctl \
             -v "$(pwd)/temp":/registration -u $UID mulesoft/flex-gateway \
             registration create \
@@ -74,7 +83,8 @@ jobs:
             --connected=true \
             --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854 \
             --output-directory=/registration \
-            gateway-9
+            $gw-name
+            
 
       - name: list files
         run: |

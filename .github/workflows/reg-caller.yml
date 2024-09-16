@@ -1,0 +1,16 @@
+name: register
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  request-reg:
+    uses: nk1752/flex-gateway-registration/.github/workflows/reg-reusable.yml@main
+    with:
+      bg: bg
+      env: dev
+
+    
