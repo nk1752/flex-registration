@@ -59,7 +59,7 @@ jobs:
       - name: days
         run: |
           # write to SUMMARY
-          echo SUMMARY=$("This is heading\nThis is level down\n") >> $GITHUB_STEP_SUMMARTY
+          echo "SUMMARY=$("This is heading\nThis is level down)" >> $GITHUB_STEP_SUMMARTY
 
           
 
