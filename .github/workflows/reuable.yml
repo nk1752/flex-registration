@@ -1,0 +1,25 @@
+# build reuable workflow
+name: reg-reusable
+
+on:
+  # callable workflow
+  workflow_call:
+    inputs:
+      bg:
+        required: true
+        type: string
+      env:
+        required: true
+        type: string
+
+env:
+  # Use docker.io for Docker Hub if empty
+  RENEW: false
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: message
+        run: echo "Registering ${{ inputs.bg }}-${{ inputs.env }}"

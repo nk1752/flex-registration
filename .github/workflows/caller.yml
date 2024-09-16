@@ -1,0 +1,25 @@
+name: calling
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+    call:
+        runs-on: ubuntu-latest
+        permissions:
+          contents: read # read|write|none
+          id-token: write # read|write|none
+        
+        steps:
+    
+          - name: Checkout repository
+            uses: actions/checkout@v4
+    
+          - name: call reusable workflow
+            uses: ./.github/workflows/reg-reusable.yml
+            with:
+              bg: "bg"
+              env: "dev"
