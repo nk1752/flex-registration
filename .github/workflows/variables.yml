@@ -58,7 +58,7 @@ jobs:
 
       - name: days
         run: |
-          SUMMARY=$'# Testing Job Summary\n## Second Level Heading\n$NAME1\n${{env.NAME2}}\n${{env.BG}}\n${{env.ENV}}'
+          SUMMARY=$'# Testing Job Summary\n## Second Level Heading\n$(NAME1)\n${{env.NAME2}}\n${{env.BG}}\n${{env.ENV}}'
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
 
           
