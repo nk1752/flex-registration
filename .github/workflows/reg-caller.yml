@@ -7,10 +7,9 @@ on:
   workflow_dispatch:
 
 jobs:
+  
   request-reg:
     uses: nk1752/flex-registration/.github/workflows/reg-reusable.yml@main
     with:
       bg: bg
       env: dev
-
-    

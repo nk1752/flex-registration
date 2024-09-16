@@ -23,20 +23,7 @@ env:
 jobs:
   register:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write # read|write|none
-      checks: write # read|write|none
-      contents: write # read|write|none
-      deployments: write # read|write|none
-      id-token: write # read|write|none
-      issues: write # read|write|none
-      discussions: write # read|write|none
-      packages: write # read|write|none
-      pages: write # read|write|none
-      pull-requests: write # read|write|none
-      repository-projects: write # read|write|none
-      security-events: write # read|write|none
-      statuses: write # read|write|none
+    
 
     steps:
       - name: Checkout repository
