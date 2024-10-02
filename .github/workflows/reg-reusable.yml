@@ -75,6 +75,11 @@ jobs:
         run: |
           flex_name="nadeem-test-1"
 
+          echo "client_id=${{steps.json.outputs.client_id}}"
+          echo "client_secret=${{steps.json.outputs.client_secret}}"
+          echo "org_id=${{steps.json.outputs.org_id}}"
+          echo "env_id=${{steps.json.outputs.env_id}}"
+
           docker run --entrypoint flexctl \
             -v "$(pwd)/temp":/registration -u $UID mulesoft/flex-gateway \
             registration create \
