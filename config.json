@@ -1,0 +1,14 @@
+{
+  "RegionsBank": {
+    "OrgID": "a6ea8ce7-6d5f-41ee-a802-5505e8833854",
+    "EnvID": "2c6f18bb-03e2-4874-a489-7216df5b5bc2",
+    "client_id":"b95726291f564ae2942ac2c4ecc46311",
+    "client_secret":"59dB6D7A84bd442bAfE7422233a82902"
+  },
+  "BLZE": {
+    "OrgID": "a6ea8ce7-6d5f-41ee-a802-5505e8833854",
+    "EnvID": "2c6f18bb-03e2-4874-a489-7216df5b5bc2",
+    "client_id":"b95726291f564ae2942ac2c4ecc46311",
+    "client_secret":"59dB6D7A84bd442bAfE7422233a82902"
+  }
+}
