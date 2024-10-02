@@ -90,7 +90,7 @@ jobs:
 
       - name: register
         run: |
-          flex_name="nadeem-test-1"
+          flex_name="nadeem-test-2"
 
           echo "client_id=${{steps.json.outputs.client_id}}"
           echo "client_secret=${{steps.json.outputs.client_secret}}"
