@@ -60,7 +60,7 @@ jobs:
 
       - name: register
         run: |
-          gw-name="${{ inputs.bg }}-${{ inputs.env }}"
+          flex_name="nadeem-test"
           client_id='b95726291f564ae2942ac2c4ecc46311'
           client_secret='59dB6D7A84bd442bAfE7422233a82902'
 
