@@ -83,7 +83,7 @@ jobs:
           docker run --entrypoint flexctl \
             -v "$(pwd)/temp":/registration -u $UID mulesoft/flex-gateway \
             registration create \
-            --client-id=$${{steps.json.outputs.client_id}} \
+            --client-id=${{steps.json.outputs.client_id}} \
             --client-secret=${{steps.json.outputs.client_secret}} \
             --environment=${{steps.json.outputs.env_id}} \
             --connected=true \
