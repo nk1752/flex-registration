@@ -111,7 +111,7 @@ jobs:
             --connected=true \
             --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854\
             --output-directory=/registration \
-            fgw-regionsbank-np-a-small-2
+            fgw-regionsbank-np-a-small-1
 
           
           if [ -f registration.yaml ]; then
@@ -126,7 +126,7 @@ jobs:
 
       - name: wait
         run: |
-          sleep 5
+          sleep 1
 
       # inspect registration.yaml
       - name: inspection
@@ -138,19 +138,20 @@ jobs:
 
             jq . reg-date.json
 
-
-      - name: get date and time
+      - name: get expiration date
         run: |
-          # get current date and time in UTC
-          date --utc "+%F"
-          date --date "$(date -utc "+%F")" +%s
+          current_timestamp=$(date +%s)
+          echo "current_timestamp -> $current_timestamp
 
-          d1=$(date -d "$(date -u +"%F")" "+%s")
-          reg_date=$(jq -r '.expiration_date[:10]' reg-date.json)
-          d2=$(date -d $reg_date "+%s")
-          echo diff=$(( (d1-d2) / 86400 ))
+          future_date="$(jq -r '.expiration_date[:19]' reg-date.json)"
+          future_timestamp=$(date -d "$future_date" +%s)
+          echo "future_timestamp -> $future_timestamp"
 
-      
+          time_diff=$((future_timestamp - current_timestamp))
+          echo "time_diff -> $time_diff"
+
+          days=$((time_diff / 86400))
+          echo "days -> $days"
 
       - name: renew
         run: |
