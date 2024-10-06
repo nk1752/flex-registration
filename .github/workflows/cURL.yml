@@ -28,4 +28,4 @@ jobs:
       - name: echo status code
         if: ${{ steps.cURL.outputs.http_code == 200 }}
         run: |
-          echo "http_code -> $http_code"
+          echo "http_code -> ${{ steps.cURL.outputs.http_code }}"
