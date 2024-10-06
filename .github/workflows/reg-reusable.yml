@@ -134,6 +134,20 @@ jobs:
 
             jq . reg-date.json
 
+
+      - name: get date and time
+        run: |
+          # get current date and time in UTC
+          date --utc "+%F"
+          date --date "$(date -utc "+%F")" +%s
+
+          d1=$(date -d "$(date -u +"%F")" "+%s")
+          reg_date=$(jq -r '.expiration_date[:10]' reg-date.json)
+          d2=$(date -d $reg_date "+%s")
+          echo diff=$(( (d1-d2) / 86400 ))
+
+      
+
       - name: renew
         run: |
           docker run --entrypoint flexctl \
