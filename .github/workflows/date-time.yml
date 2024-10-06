@@ -34,30 +34,14 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: get date and time
-        run: |
-          # get current date and time in UTC
-          date --utc "+%F"
-          date --date "$(date -utc "+%F")" +%s
-
-          d1=$(date -d "$(date -u +"%F")" "+%s")
-          d2=$(date -d "2024-07-15" "+%s")
-          echo diff=$(( (d1-d2) / 86400 ))
-
           
-      - name: parse json file for current time
-        run: |
-          ls -l
-          jq '.' reg-time.json
-          
-      # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |    
+          jq . reg-time.json
+          
           reg-date=$(jq '.expiration_date[:10]' reg-time.json)
           echo "exp-date=$reg-date"
 
-          date -d "$(date -u "+%F")" "+%s"
           current_days=$(date -d "$(date -u +"%F")" "+%s")
 
           reg_days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
