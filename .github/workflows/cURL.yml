@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: test cURL status code
         run: |
-          http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
+          http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com/news)
           echo "http_code -> $http_code"
           if [ $http_code -eq 200 ]; then
             echo "Success"
