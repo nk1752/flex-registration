@@ -40,8 +40,8 @@ jobs:
           jq . reg-time.json
           jq -r '.expiration_date[:10]' reg-time.json
           
-          reg-date=$(jq -r '.expiration_date[:10]' reg-time.json)
-          echo "exp-date=$reg-date"
+          reg-date-str="$(jq -r '.expiration_date[:10]' reg-time.json)"
+          echo "exp-date -> $reg-date-str"
 
           current_days=$(date -d "$(date -u +"%F")" "+%s")
 
