@@ -36,24 +36,39 @@ jobs:
         uses: actions/checkout@v4
           
       - name: get expiration date
-        run: |    
-          jq . reg-time.json
-          jq -r '.expiration_date[:10]' reg-time.json
+        run: |
+
+          current_timestamp=$(date +%s)
+          echo "current_timestamp -> $current_timestamp"
+
+          future_date="2024-10-15 12:00:00"
+          future_timestamp=$(date -d "$future_date" +%s)
+          echo "future_timestamp -> $future_timestamp"
+
+          time_diff=$((future_timestamp - current_timestamp))
+          echo "time_diff -> $time_diff"
+
+          days=$((time_diff / 86400))
+          echo "days -> $days"
+
+
+  # jq . reg-time.json
+          # jq -r '.expiration_date[:10]' reg-time.json > reg-date.json
           
-          reg-date-str="$(jq -r '.expiration_date[:10]' reg-time.json)"
-          echo "exp-date -> $reg-date-str"
+          # jq -r '.expiration_date[:10]' reg-time.json)"
+          # echo "exp-date -> $reg-date-str"
 
-          current_days=$(date -d "$(date -u +"%F")" "+%s")
+          # current_days=$(date -d "$(date -u +"%F")" "+%s")
 
-          reg_days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
+          # reg_days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
 
-          remaining_days="days -> $( ($current_days - $reg_days) / 86400 )"
+          # remaining_days="days -> $( ($current_days - $reg_days) / 86400 )"
 
-          if [[ "$remaining_days" < 300 ]]; then
-            echo "expired"
-          else
-            echo "not expired"
-          fi
+          # if [[ "$remaining_days" < 300 ]]; then
+          #   echo "expired"
+          # else
+          #   echo "not expired"
+          # fi      
 
 
       
