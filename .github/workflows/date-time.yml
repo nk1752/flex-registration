@@ -41,7 +41,9 @@ jobs:
           current_timestamp=$(date +%s)
           echo "current_timestamp -> $current_timestamp"
 
-          future_date="2024-10-15 12:00:00"
+          #get expiration timestamp from reg-time.json
+
+          future_date="$(jq -r '.expiration_date' reg-time.json)"
           future_timestamp=$(date -d "$future_date" +%s)
           echo "future_timestamp -> $future_timestamp"
 
