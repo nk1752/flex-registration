@@ -111,9 +111,9 @@ jobs:
             --connected=true \
             --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854\
             --output-directory=/registration \
-            fgw-regionsbank-np-a-small-2 > msg.json
+            fgw-regionsbank-np-a-small-2
 
-          jq . msg.json
+          
           if [ -f registration.yaml ]; then
             cat registration.yaml
           else
