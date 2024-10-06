@@ -7,9 +7,9 @@ name: date-time
 
 on:
   workflow_dispatch:
-  push:
-      branches:
-        - main
+  # push:
+  #     branches:
+  #       - main
 
 env:
   # Use docker.io for Docker Hub if empty
