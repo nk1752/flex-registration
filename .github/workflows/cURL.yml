@@ -1,0 +1,19 @@
+name: cRUL status
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cURL:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read|write|none
+      id-token: write # read|write|none
+
+    steps:
+      - name: test cURL status code
+        run: |
+          http_code=$(curl -s -o /dev/null -w "%{http_code}" https://www.google.com)
+          echo "http_code -> $http_code"
