@@ -14,11 +14,18 @@ jobs:
 
     steps:
       - name: test cURL status code
+        id: cURL
         run: |
-          http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com/news)
+          http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
           echo "http_code -> $http_code"
+          echo "http_code=$http_code" >> $GITHUB_OUTPUT
           if [[ $http_code == 200 ]]; then
             echo "Success"
           else
             echo "Failed"
           fi
+
+      - name: echo status code
+        if: ${{ steps.cURL.outputs.http_code == 200 }}
+        run: |
+          echo "http_code -> $http_code"
