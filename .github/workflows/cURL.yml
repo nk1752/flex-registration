@@ -17,7 +17,7 @@ jobs:
         run: |
           http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com/news)
           echo "http_code -> $http_code"
-          if [ $http_code -eq 200 ]; then
+          if [[ $http_code == 200 ]]; then
             echo "Success"
           else
             echo "Failed"
