@@ -101,7 +101,7 @@ jobs:
 
       - name: register
         run: |
-          sudo docker run --entrypoint flexctl \
+          docker run --entrypoint flexctl \
             -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
             registration create \
@@ -127,14 +127,16 @@ jobs:
       # inspect registration.yaml
       - name: inspection
         run: |
-          sudo docker run --entrypoint flexctl \
+          docker run --entrypoint flexctl \
             -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
-            registration inspect --file=/registration/registration.yaml > reg-date.yaml
+            registration inspect --file=/registration/registration.yaml > reg-date.json
+
+            jq . reg-date.json
 
       - name: renew
         run: |
-          sudo docker run --entrypoint flexctl \
+          docker run --entrypoint flexctl \
             -v "$(pwd)/renew":/renew \
             -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
@@ -144,7 +146,7 @@ jobs:
             --output-directory=/renew \
             /registration/registration.yaml
 
-          jq . renew/registration.yaml
+          cat renew/registration.yaml
           
                       
 
