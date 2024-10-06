@@ -7,6 +7,9 @@ name: date-time
 
 on:
   workflow_dispatch:
+  push:
+      branches:
+        - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -51,19 +54,17 @@ jobs:
       # query for expiration_date and put it in a variable
       - name: get expiration date
         run: |    
-          jq '.expiration_date[:10]' reg-time.json > exp-date.json
-
-          jq '.' exp-date.json
-
-          echo "exp-date=$(cat exp-date.json)" >> $GITHUB_ENV
-          echo "env: ${{ env.exp-date }}"
+          reg-date=$(jq '.expiration_date[:10]' reg-time.json)
+          echo "exp-date=$reg-date"
 
           date -d "$(date -u "+%F")" "+%s"
-          cdays=$(date -d "$(date -u +"%F")" "+%s")
-          edays=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
-          days_remaing=$(( (edays-cdays) / 86400 ))
+          current_days=$(date -d "$(date -u +"%F")" "+%s")
 
-          if [[ "$days_remaing" < 30 ]]; then
+          reg_days=$(date -d "$(jq -r '.expiration_date[:10]' reg-time.json)" "+%s")
+
+          remaining_days="days -> $( ($current_days - $reg_days) / 86400 )"
+
+          if [[ "$remaining_days" < 300 ]]; then
             echo "expired"
           else
             echo "not expired"
