@@ -111,10 +111,14 @@ jobs:
             --connected=true \
             --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854\
             --output-directory=/registration \
-            fgw-regionsbank-np-a-small-2
+            fgw-regionsbank-np-a-small-2 > msg.json
 
-          cat registration.yaml
-            
+          jq . msg.json
+          if [ -f registration.yaml ]; then
+            cat registration.yaml
+          else
+            echo "registration.yaml does not exist"
+          fi
 
       - name: list files
         run: |
