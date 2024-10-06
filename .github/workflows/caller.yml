@@ -19,5 +19,6 @@ jobs:
           - name: call reusable workflow
             uses: ./.github/workflows/reg-reusable.yml
             with:
-              bg: "bg"
-              env: "dev"
+              bg: "RegionsBank"
+              env: "DEV"
+              env_name: "np-a"

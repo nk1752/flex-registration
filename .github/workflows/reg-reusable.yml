@@ -15,6 +15,17 @@ on:
       env:
         required: true
         type: string
+      env_name:
+        required: true
+        type: string
+      size:
+        required: false
+        type: string
+        default: "small"
+      no: 
+        required: false
+        type: string
+        default: "1"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -58,66 +69,55 @@ jobs:
       # docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
       # Aliases: docker run
 
-      - name: build vars
-        id: json
-        run: |
-          # iterate over config.json keys
-          for key in $(jq -r 'keys[]' config.json); do
-            if [[ "$key" == "RegionsBank" ]]; then
-              echo "key -> $key"
+      # - name: build vars
+      #   id: json
+      #   run: |
+      #     # iterate over config.json keys
+      #     for key in $(jq -r 'keys[]' config.json); do
+      #       if [[ "$key" == "RegionsBank" ]]; then
+      #         echo "key -> $key"
               
-              client_id=$(jq -r .$key.client_id config.json)
-              echo "client_id=$client_id"
-              echo "client_id=$client_id" >> $GITHUB_OUTPUT
+      #         client_id=$(jq -r .$key.client_id config.json)
+      #         echo "client_id=$client_id"
+      #         echo "client_id=$client_id" >> $GITHUB_OUTPUT
 
-              client_secret=$(jq -r .$key.client_secret config.json)
-              echo "client_secret=$client_secret"
-              echo "client_secret=$client_secret" >> $GITHUB_OUTPUT
+      #         client_secret=$(jq -r .$key.client_secret config.json)
+      #         echo "client_secret=$client_secret"
+      #         echo "client_secret=$client_secret" >> $GITHUB_OUTPUT
 
-              org_id=$(jq -r .$key.OrgID config.json)
-              echo "org_id=$org_id"
-              echo "org_id=$org_id" >> $GITHUB_OUTPUT
+      #         org_id=$(jq -r .$key.OrgID config.json)
+      #         echo "org_id=$org_id"
+      #         echo "org_id=$org_id" >> $GITHUB_OUTPUT
 
-              env_id=$(jq -r .$key.EnvID config.json)
-              echo "env_id=$env_id"
-              echo "env_id=$env_id" >> $GITHUB_OUTPUT
+      #         env_id=$(jq -r .$key.EnvID config.json)
+      #         echo "env_id=$env_id"
+      #         echo "env_id=$env_id" >> $GITHUB_OUTPUT
 
-              break
+      #         break
               
-            fi
-          done
+      #       fi
+      #     done
           
 
       - name: register
         run: |
-          flex_name="nadeem-test-2"
-
-          echo "client_id=${{steps.json.outputs.client_id}}"
-          echo "client_secret=${{steps.json.outputs.client_secret}}"
-          echo "org_id=${{steps.json.outputs.org_id}}"
-          echo "env_id=${{steps.json.outputs.env_id}}"
-
           docker run --entrypoint flexctl \
-            -v "$(pwd)/temp":/registration -u $UID mulesoft/flex-gateway \
+            -v "$(pwd)":/registration \
+            -u $UID mulesoft/flex-gateway \
             registration create \
-            --client-id=${{steps.json.outputs.client_id}} \
-            --client-secret=${{steps.json.outputs.client_secret}} \
-            --environment=${{steps.json.outputs.env_id}} \
+            --client-id=b95726291f564ae2942ac2c4ecc46311 \
+            --client-secret=59dB6D7A84bd442bAfE7422233a82902 \
+            --environment=2c6f18bb-03e2-4874-a489-7216df5b5bc2 \
             --connected=true \
-            --organization=${{steps.json.outputs.org_id}} \
+            --organization=a6ea8ce7-6d5f-41ee-a802-5505e8833854\
             --output-directory=/registration \
-            $flex_name
+            fgw-regionsbank-np-a-small-1
+
+          jq . registration.yaml
             
 
       - name: list files
         run: |
-          ls -l
-
-      - name: push to Artifactory
-        run: |
-          cat temp/registration.yaml
-          # zip registration.yaml
-          zip -r registration.zip temp/registration.yaml
           ls -l
 
       - name: wait
@@ -128,15 +128,15 @@ jobs:
       - name: inspection
         run: |
           sudo docker run --entrypoint flexctl \
-            -v "$(pwd)/temp":/registration \
+            -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
             registration inspect --file=/registration/registration.yaml > reg-date.yaml
 
       - name: renew
         run: |
           sudo docker run --entrypoint flexctl \
-            -v "$(pwd)":/renew \
-            -v "$(pwd)/temp":/registration \
+            -v "$(pwd)/renew":/renew \
+            -v "$(pwd)":/registration \
             -u $UID mulesoft/flex-gateway \
             registration renew \
             --client-id=b95726291f564ae2942ac2c4ecc46311 \
@@ -144,12 +144,7 @@ jobs:
             --output-directory=/renew \
             /registration/registration.yaml
 
-      - name: push new registration to Artifactory
-        run: |
-          cat registration.yaml
-          # zip registration.yaml
-          zip -r registration-new.zip registration.yaml
-          ls -l
+          jq . renew/registration.yaml
           
                       
 
