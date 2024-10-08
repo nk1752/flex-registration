@@ -1,0 +1,27 @@
+name: input test
+
+on:
+  workflow_dispatch:
+    inputs:
+      TAG:
+        description: 'TAG version'
+        required: false
+        default: 'latest'
+
+jobs:
+  pull-flex:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read|write|none
+      id-token: write # read|write|none
+    
+    steps:
+
+      - name: setup docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: pull image
+        run: |
+          docker pull mulesoft/flex-gateway:${{ github.event.inputs.TAG }}
+          docker images
+      
