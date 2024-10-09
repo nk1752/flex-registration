@@ -20,7 +20,7 @@ jobs:
           http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
           echo "http_code -> $http_code"
           echo "http_code=$http_code" >> $GITHUB_OUTPUT
-          echo "http_code=$http_code" >> $GITHUB_STEP_SUMMARY
+          echo "# http_code: $http_code" > $GITHUB_STEP_SUMMARY
 
           if [[ $http_code == 200 && 200 == 200 ]]; then
             echo "Success"
