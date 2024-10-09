@@ -2,9 +2,9 @@ name: cRUL status
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 jobs:
   cURL:
@@ -20,13 +20,18 @@ jobs:
           http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
           echo "http_code -> $http_code"
           echo "http_code=$http_code" >> $GITHUB_OUTPUT
+          echo "http_code=$http_code" >> $GITHUB_STEP_SUMMARY
+
           if [[ $http_code == 200 && 200 == 200 ]]; then
             echo "Success"
+            echo "# Sucess" > $GITHUB_STEP_SUMMARY
           else
             echo "Failed"
+            echo "# Failed" > $GITHUB_STEP_SUMMARY
           fi
 
       - name: echo status code
         if: ${{ steps.cURL.outputs.http_code == 200 }}
         run: |
           echo "http_code -> ${{ steps.cURL.outputs.http_code }}"
+          echo "# All Done!" > $GITHUB_STEP_SUMMARY

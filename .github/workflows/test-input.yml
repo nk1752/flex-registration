@@ -6,10 +6,12 @@ on:
       TAG:
         description: 'TAG version'
         required: true
-        default: 'latest'
+        default: latest
 
 jobs:
   pull-flex:
+    # do not run on pull request
+    if: (github.event_name != 'pull_request')
     runs-on: ubuntu-latest
     permissions:
       contents: read # read|write|none
