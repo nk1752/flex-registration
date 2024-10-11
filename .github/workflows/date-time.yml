@@ -43,6 +43,8 @@ jobs:
 
           #get expiration timestamp from reg-time.json
 
+          jq . reg-time.json
+
           future_date="$(jq -r '.expiration_date[:19]' reg-time.json)"
           future_timestamp=$(date -d "$future_date" +%s)
           echo "future_timestamp -> $future_timestamp"
