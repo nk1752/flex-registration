@@ -60,7 +60,10 @@ jobs:
             RENEW=true
           else
             echo "More than 7 days left"
+            RENEW=false
           fi
+
+          echo "RENEW -> $RENEW"
 
 
 
