@@ -7,6 +7,7 @@ on:
 
 env:
   count: 4
+  name: "test"
 
 jobs:
   loop:
@@ -14,13 +15,12 @@ jobs:
     permissions:
       contents: read # read|write|none
       id-token: write # read|write|none
-      
+
     steps:
-          
       - name: for loop
         run: |
           for counter in {1..4}; do
-            url="${{env.count}}/$counter"
+            url="${{env.count}}'-'${{ env.name }}/$counter"
             echo "url -> $url"
             
           done
