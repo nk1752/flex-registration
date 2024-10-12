@@ -1,0 +1,24 @@
+name: loop-test
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  count: 4
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read|write|none
+      id-token: write # read|write|none
+      
+    steps:
+          
+      - name: for loop
+        run: |
+          for conter in {1..4}; do
+            echo "counter -> $conter"
+          done
