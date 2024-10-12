@@ -21,7 +21,7 @@ jobs:
         run: |
           for counter in {1..4}; do
             nk="${{env.count}}-${{ env.name }}/$counter"
-            url="/v1/abc/${{env.count}}-${{ env.name }}/$nk"
+            url="/v1/abc/${{ github.event_name }}/$nk"
             echo "url -> $url"
             
           done
