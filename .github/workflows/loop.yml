@@ -20,7 +20,7 @@ jobs:
       - name: for loop
         run: |
           for counter in {1..4}; do
-            url="$(${{env.count}}/$counter)"
+            url="${{env.count}}/$(counter)"
             echo "url -> $url"
             
           done
