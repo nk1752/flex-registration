@@ -20,7 +20,7 @@ jobs:
       - name: for loop
         run: |
           for conter in {1..4}; do
-            url="https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs"
+            url="$(https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs)"
             echo "url -> $url"
             url="${{env.count}}/$counter"
             echo "url -> $url"
