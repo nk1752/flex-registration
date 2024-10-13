@@ -14,6 +14,9 @@ jobs:
       id-token: write # read|write|none
 
     steps:
+      - name: checkout
+        uses: actions/checkout@v4.2.0
+
       - name: test cURL status code
         id: cURL
         run: |
@@ -39,5 +42,5 @@ jobs:
 
       - name: call script
         run: |
-          msg=$(bash curl-test.sh)
+          msg=$(bash ./scripts/curl-test.sh)
           echo "msg -> $msg"
