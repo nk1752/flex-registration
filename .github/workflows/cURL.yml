@@ -39,5 +39,5 @@ jobs:
 
       - name: call script
         run: |
-          msg=$(bash ./scripts/curl-test.sh)
+          msg=$(bash curl-test.sh)
           echo "msg -> $msg"
