@@ -36,3 +36,8 @@ jobs:
         run: |
           echo "http_code -> ${{ steps.cURL.outputs.http_code }}"
           echo "# All Done!" >> $GITHUB_STEP_SUMMARY
+
+      - name: call script
+        run: |
+          msg=$(bash ./script/curl-test.sh)
+          echo "msg -> $msg"
