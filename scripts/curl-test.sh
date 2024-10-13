@@ -15,4 +15,4 @@ cd "$(dirname "$0")"
 cd ..
 root_dir=$(pwd)
 
-echo "Root directory: $root_dir"
+echo "$(ls -l)"
