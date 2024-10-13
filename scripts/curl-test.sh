@@ -15,6 +15,8 @@ cd "$(dirname "$0")"
 cd ..
 root_dir=$(pwd)
 
+echo "hello from scripts/curl-test.sh"
+
 echo "root_dir -> $root_dir"
 
 http_code=$(curl -so /dev/null -w "%{http_code}" $1)
