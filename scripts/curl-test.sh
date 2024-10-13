@@ -17,6 +17,7 @@ root_dir=$(pwd)
 
 echo "can you see this"
 
-curl -X GET $1
+http_code=$(curl -so /dev/null -w "%{http_code}" $1)
+echo "http_code -> $http_code"
+echo $http_code
 
-echo "$(ls -l)"
