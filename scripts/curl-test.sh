@@ -9,9 +9,13 @@
 # this is necessary because the script is run from a different directory
 # and the relative paths used in the script are incorrect
 # this line sets the current directory to the directory where the script is located
-# which is the root directory of the projec
+# which is the root directory of the project
+pwd=$(pwd)
+cd "$(dirname "$0")"
+cd ..
+root_dir=$(pwd)
 
-echo "can you see this"
+echo "root_dir -> $root_dir"
 
 http_code=$(curl -so /dev/null -w "%{http_code}" $1)
 echo "http_code -> $http_code"
