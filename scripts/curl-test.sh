@@ -15,4 +15,8 @@ cd "$(dirname "$0")"
 cd ..
 root_dir=$(pwd)
 
+echo "can you see this"
+
+curl -X GET $1
+
 echo "$(ls -l)"

@@ -42,5 +42,5 @@ jobs:
 
       - name: call script
         run: |
-          msg=$(bash ./scripts/curl-test.sh)
+          msg=$(bash ./scripts/curl-test.sh "https://www.google.com")
           echo "msg -> $msg"
