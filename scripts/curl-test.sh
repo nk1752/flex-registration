@@ -9,11 +9,7 @@
 # this is necessary because the script is run from a different directory
 # and the relative paths used in the script are incorrect
 # this line sets the current directory to the directory where the script is located
-# which is the root directory of the project
-pwd=$(pwd)
-cd "$(dirname "$0")"
-cd ..
-root_dir=$(pwd)
+# which is the root directory of the projec
 
 echo "can you see this"
 
