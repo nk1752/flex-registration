@@ -4,5 +4,5 @@ ls -l
 
 jq . reg-time.json
 
-name=${{ env.name}}
+name=${{ steps.vars.outputs.name }}
 echo $name

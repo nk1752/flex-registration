@@ -37,14 +37,17 @@ jobs:
 
       - name: get sum
         run: |
+          echo "call sum function"
           sum=$(bash ${GITHUB_WORKSPACE}/scripts/getSum.sh 34 9)
           echo "sum -> $sum"
 
       - name: step vars
+        id: vars
         run: |
-          name="nadeem"
+          name="khalid"
           svar=$(bash ${GITHUB_WORKSPACE}/scripts/stepVars.sh)
           echo "svar -> $svar"
+          echo "name=$name" >> $GITHUB_OUTPUT
 
       - name: get list
         run: |

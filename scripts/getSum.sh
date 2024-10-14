@@ -8,5 +8,5 @@ source ./scripts/functions.sh
 sum $1 $2
 result=$?
 
-echo "99"
+echo $result
 
