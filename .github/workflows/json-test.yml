@@ -1,0 +1,33 @@
+name: json-test
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  # Use docker.io for Docker Hub if empty
+  RENEW: false
+  id: 1
+  name: "nadeem"
+
+jobs:
+  JsonTest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read|write|none
+      id-token: write # read|write|none
+      
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: make json
+        run: |
+          name="nadeem"
+          id=1
+          echo {\"name\":\"$name\",\"id\":\"$id\"} > login.json
+          jq . login.json
+
+      
