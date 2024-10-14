@@ -67,7 +67,7 @@ function Display(){
   local script_path=$script_dir/$script_name
 
   echo "pwd -----> $(pwd)"
-  echo '{}' > "$script_path/ned.json"
+  echo '{}' > ned.json
   echo "script_dir -> $script_dir"
   echo "script_name -> $script_name"
   echo "script_path -> $script_path"
