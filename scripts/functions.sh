@@ -5,8 +5,11 @@ function sum(){
 
   local num1=$1
   local num2=$2
+  local sum=$((num1+num2))
 
-  return $((num1+num2))
+  echo "func sum -> $sum"
+
+  return $sum
   
 }
 
