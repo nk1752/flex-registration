@@ -52,8 +52,8 @@ jobs:
 
       - name: get days
         run: |
-          nk="nadeem"
-          days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
+          
+          bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh
           echo "workflow days -> $days"
 
           if [[ $days -lt 7 ]]; then
