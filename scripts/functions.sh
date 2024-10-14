@@ -43,7 +43,7 @@ function DaysToExpiry(){
   echo "script_name -> $script_name"
   local script_path=$script_dir/$script_name
   echo "script_path -> $script_path"
-  
+
   local current_timestamp=$(date +%s)
   echo "current_timestamp -> $current_timestamp"
 
@@ -55,10 +55,10 @@ function DaysToExpiry(){
   local future_timestamp=$(date -d "$future_date" +%s)
   echo "future_timestamp -> $future_timestamp"
 
-  local time_diff=$(($future_timestamp - $current_timestamp))
+  local time_diff=$((future_timestamp - current_timestamp))
   echo "time_diff -> $time_diff"
 
-  loacl days=$(($time_diff / 86400))
+  local days=$((time_diff / 86400))
   echo "function days -> $days"
 
   return $days
