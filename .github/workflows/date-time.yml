@@ -67,7 +67,7 @@ jobs:
 
       - name: call function
         run: |
-          hello
+          bash hello
           echo "message is $?"
 
 
