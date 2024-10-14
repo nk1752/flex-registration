@@ -79,6 +79,11 @@ jobs:
           list=$(bash ${GITHUB_WORKSPACE}/scripts/getList.sh)
           echo "list is $list"
 
+      - name: get days
+        run: |
+          days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
+          echo "days -> $days"
+
 
 
 
