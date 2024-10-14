@@ -37,24 +37,29 @@ function help(){
 }
 
 function DaysToExpiry(){
-  # local current_timestamp=$(date +%s)
-  # echo "current_timestamp -> $current_timestamp"
+  local script_dir=$(dirname $0)
+  echo "script_dir -> $script_dir"
+  local script_name=$(basename $0)
+  echo "script_name -> $script_name"
+  local script_path=$script_dir/$script_name
+  echo "script_path -> $script_path"
+  
+  local current_timestamp=$(date +%s)
+  echo "current_timestamp -> $current_timestamp"
 
-  # #get expiration timestamp from reg-time.json
+  #get expiration timestamp from reg-time.json
 
-  # jq . reg-time.json
+  jq . reg-time.json
 
-  # local future_date="$(jq -r '.expiration_date[:19]' reg-time.json)"
-  # local future_timestamp=$(date -d "$future_date" +%s)
-  # echo "future_timestamp -> $future_timestamp"
+  local future_date="$(jq -r '.expiration_date[:19]' reg-time.json)"
+  local future_timestamp=$(date -d "$future_date" +%s)
+  echo "future_timestamp -> $future_timestamp"
 
-  # local time_diff=$(($future_timestamp - $current_timestamp))
-  # echo "time_diff -> $time_diff"
+  local time_diff=$(($future_timestamp - $current_timestamp))
+  echo "time_diff -> $time_diff"
 
-  # loacl days=$(($time_diff / 86400))
-  # echo "function days -> $days"
-
-  local days=10
+  loacl days=$(($time_diff / 86400))
+  echo "function days -> $days"
 
   return $days
 
