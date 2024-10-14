@@ -27,10 +27,10 @@ jobs:
         run: |
           client_id=349759438579347
           client_id=349759438579
-          json_string=$"{\"client_id\":\"$client_id\",\"client_id\":$client_id}"
+          json_string=$"{\"client_id\":$client_id,\"client_id\":$client_id}"
           echo "json_string -> $json_string"
 
           echo $json_string > login.json
-          cat login.json
+          jq . login.json
 
       
