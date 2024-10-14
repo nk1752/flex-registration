@@ -14,6 +14,7 @@ fi
 echo "WORKING_DIR: $WORKING_DIR"
 
 echo "cat name: $cat"
+echo "top level env: $name"
 
 
 Display $1 $2
