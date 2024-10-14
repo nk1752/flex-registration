@@ -4,5 +4,5 @@
 source ./scripts/functions.sh
 
 result=$(sub $1 $2)
-echo $result
+return $result
 

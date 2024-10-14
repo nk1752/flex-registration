@@ -4,5 +4,5 @@
 source ./scripts/functions.sh
 result=$(sum $1 $2)
 
-echo $result
+echo $?
 
