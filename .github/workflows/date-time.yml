@@ -68,8 +68,11 @@ jobs:
       - name: call function
         run: |
           echo "workspace -> ${GITHUB_WORKSPACE}"
-          message=$(bash ${GITHUB_WORKSPACE}/scripts/hello.sh "nadeem")
-          echo "message is $message"
+          result=$(bash ${GITHUB_WORKSPACE}/scripts/getSum.sh 34 9)
+          echo "result is $result"
+
+          result=$(bash ${GITHUB_WORKSPACE}/scripts/getSub.sh 6 2)
+          echo "result is $result"
 
 
 
