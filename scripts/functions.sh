@@ -61,10 +61,16 @@ function HttpCode(){
 
 }
 
+function EchoTest(){
+  echo "Hello, World!"
+}
+
 function Display(){
   local script_dir=$(dirname $0)
   local script_name=$(basename $0)
   local script_path=$script_dir/$script_name
+
+  EchoTest
 
   echo "pwd -----> $(pwd)"
   echo '{}' > ned.json
