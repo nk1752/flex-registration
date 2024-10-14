@@ -1,4 +1,5 @@
 #!/bin/bash
 
 ls -l
-echo ls -l
+name=${{ env.name}}
+echo $name
