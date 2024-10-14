@@ -53,6 +53,7 @@ jobs:
 
       - name: get days
         run: |    
+          jq . reg-time.json
           days_to_expiry=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
           
           echo "days_to_expiry -> $days_to_expiry"
