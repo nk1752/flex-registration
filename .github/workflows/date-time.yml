@@ -34,53 +34,25 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-          
-      - name: get expiration date
-        id: date
+
+      - name: get sum
         run: |
+          sum=$(bash ${GITHUB_WORKSPACE}/scripts/getSum.sh 34 9)
+          echo "sum -> $sum"
 
-          current_timestamp=$(date +%s)
-          echo "current_timestamp -> $current_timestamp"
-
-          #get expiration timestamp from reg-time.json
-
-          jq . reg-time.json
-
-          future_date="$(jq -r '.expiration_date[:19]' reg-time.json)"
-          future_timestamp=$(date -d "$future_date" +%s)
-          echo "future_timestamp -> $future_timestamp"
-
-          time_diff=$(($future_timestamp - $current_timestamp))
-          echo "time_diff -> $time_diff"
-
-          days=$(($time_diff / 86400))
-          echo "days -> $days"
-
-          if [[ $days -lt 7 ]]; then
-            echo "Less than 7 days left"
-            RENEW=true
-          else
-            echo "More than 7 days left"
-            RENEW=false
-          fi
-
-          echo "RENEW -> $RENEW"
-          echo "date=$future_date" >> $GITHUB_ENV
-
-      - name: call function
+      - name: step vars
         run: |
-          echo "workspace -> ${GITHUB_WORKSPACE}"
-          result=$(bash ${GITHUB_WORKSPACE}/scripts/getSum.sh 34 9)
-          echo "result is $result"
+          name="nadeem"
+          bash ${GITHUB_WORKSPACE}/scripts/stepVars.sh
 
-          result=$(bash ${GITHUB_WORKSPACE}/scripts/getSub.sh 6 2)
-          echo "result is $result"
-
+      - name: get list
+        run: |
           list=$(bash ${GITHUB_WORKSPACE}/scripts/getList.sh)
           echo "list is $list"
 
       - name: get days
         run: |
+          nk="nadeem"
           days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
           echo "workflow days -> $days"
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 current_timestamp=$(date +%s)
 #echo "current_timestamp -> $current_timestamp"
 
