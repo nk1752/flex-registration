@@ -6,4 +6,4 @@ source ./scripts/functions.sh
 DaysToExpiry
 days=$?
 
-echo $days
+echo "$days"

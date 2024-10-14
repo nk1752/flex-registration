@@ -37,12 +37,12 @@ function help(){
 }
 
 function DaysToExpiry(){
-  local script_dir=$(dirname $0)
-  echo "script_dir -> $script_dir"
-  local script_name=$(basename $0)
-  echo "script_name -> $script_name"
-  local script_path=$script_dir/$script_name
-  echo "script_path -> $script_path"
+  # local script_dir=$(dirname $0)
+  # echo "script_dir -> $script_dir"
+  # local script_name=$(basename $0)
+  # echo "script_name -> $script_name"
+  # local script_path=$script_dir/$script_name
+  # echo "script_path -> $script_path"
 
   local current_timestamp=$(date +%s)
   echo "current_timestamp -> $current_timestamp"
