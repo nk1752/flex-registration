@@ -4,7 +4,7 @@ ls -l
 
 jq . reg-time.json
 
-name="${{ env.name }}"
+name=$("${{ env.name }}")
 echo "step name $name"
 
 last="${{ steps.vars.outputs.last }}"
