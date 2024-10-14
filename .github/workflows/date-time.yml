@@ -67,7 +67,7 @@ jobs:
 
       - name: call function
         run: |
-          bash ./seripts/hello
+          bash ./scripts/hello
           echo "message is $?"
 
 
