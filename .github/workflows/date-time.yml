@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v4
           
       - name: get expiration date
+        id: date
         run: |
 
           current_timestamp=$(date +%s)
@@ -64,6 +65,7 @@ jobs:
           fi
 
           echo "RENEW -> $RENEW"
+          echo "date=$future_date" >> $GITHUB_ENV
 
       - name: call function
         run: |
