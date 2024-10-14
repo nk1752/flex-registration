@@ -45,7 +45,7 @@ function DaysToExpiry(){
   # echo "script_path -> $script_path"
 
   local current_timestamp=$(date +%s)
-  echo "current_timestamp -> $current_timestamp"
+  echo "func current_timestamp -> $current_timestamp"
 
   #get expiration timestamp from reg-time.json
 
@@ -53,13 +53,13 @@ function DaysToExpiry(){
 
   local future_date="$(jq -r '.expiration_date[:19]' reg-time.json)"
   local future_timestamp=$(date -d "$future_date" +%s)
-  echo "future_timestamp -> $future_timestamp"
+  echo "func future_timestamp -> $future_timestamp"
 
   local time_diff=$((future_timestamp - current_timestamp))
-  echo "time_diff -> $time_diff"
+  echo "func time_diff -> $time_diff"
 
   local days=$((time_diff / 86400))
-  echo "function days -> $days"
+  echo "func days -> $days"
 
   return $days
 
