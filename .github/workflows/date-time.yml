@@ -74,6 +74,9 @@ jobs:
           result=$(bash ${GITHUB_WORKSPACE}/scripts/getSub.sh 6 2)
           echo "result is $result"
 
+          list=$(bash ${GITHUB_WORKSPACE}/scripts/getList.sh)
+          echo "list is $list"
+
 
 
 

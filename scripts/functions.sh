@@ -21,3 +21,8 @@ function sub(){
   echo $((num1-num2))
   
 }
+
+function list(){
+
+  echo ls -l
+}
