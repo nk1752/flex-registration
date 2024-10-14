@@ -22,4 +22,4 @@ echo "last name: $last_name"
 echo "flex name: $1"
 
 echo "********** calling function **********"
-#Display $name $last_name
+Display $name $last_name
