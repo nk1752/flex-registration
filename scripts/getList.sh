@@ -19,5 +19,7 @@ echo "top level env: $name"
 echo "first name: $first_name"
 echo "last name: $last_name"
 
+echo "flex name: $1"
 
-Display $name $last_name
+echo "********** calling function **********"
+#Display $name $last_name

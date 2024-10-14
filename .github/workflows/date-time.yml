@@ -54,9 +54,14 @@ jobs:
             cat: "Tiger"
             first_name: ${{ env.name }}
             last_name: ${{ steps.vars.outputs.last }}
+            fgw_name: $fgw_name_c
         run: |
-          bash ${GITHUB_WORKSPACE}/scripts/getList.sh  
-          echo "can I still do this"
+          fgw_name='fgw-regionsbank-dev'
+          for counter in {1..5}: do
+            fgw_name_c=$fgw_name'-$counter'
+            echo "fgw_name_c -> $fgw_name_c"
+            bash ${GITHUB_WORKSPACE}/scripts/getList.sh $fgw_name_c
+          done
         
 
             
