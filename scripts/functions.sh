@@ -51,7 +51,7 @@ function DaysToExpiry(){
   # local time_diff=$(($future_timestamp - $current_timestamp))
   # echo "time_diff -> $time_diff"
 
-  # days=$(($time_diff / 86400))
+  # loacl days=$(($time_diff / 86400))
   # echo "function days -> $days"
 
   local days=10
