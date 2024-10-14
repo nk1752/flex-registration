@@ -6,6 +6,6 @@ source ./scripts/functions.sh
 
 #DaysToExpiry
 #days="$?"
-days=99
+days=2
 
 echo "$days"
