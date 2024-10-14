@@ -1,11 +1,10 @@
 #!/bin/bash
 
-ls -l
+#set -e
 
+source ./scripts/functions.sh
+
+ls -l
 jq . reg-time.json
 
-name=$1
-echo "env name $name"
-
-last=$2
-echo "step name $last"
+Display $1 $2

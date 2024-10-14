@@ -60,3 +60,15 @@ function HttpCode(){
   fi
 
 }
+
+function Display(){
+  local script_dir=$(dirname $0)
+  local script_name=$(basename $0)
+  local script_path=$script_dir/$script_name
+  echo "script_dir -> $script_dir"
+  echo "script_name -> $script_name"
+  echo "script_path -> $script_path"
+
+  echo "env name -> $1"
+  echo "step name -> $2"
+}
