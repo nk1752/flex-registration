@@ -51,12 +51,11 @@ jobs:
           echo "list is $list"
 
       - name: get days
-        run: |
-          
-          days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
-          echo "workflow days -> $days"
+        run: |    
+          days_to_expiry=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
+          echo "days_to_expiry -> $days_to_expiry"
 
-          if [[ $days -lt 7 ]]; then
+          if [[ $days_to_expiry -lt 7 ]]; then
             echo "Less than 7 days left"
             RENEW=true
           else
