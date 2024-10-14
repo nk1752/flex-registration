@@ -7,9 +7,9 @@ name: date-time
 
 on:
   workflow_dispatch:
-  # push:
-  #     branches:
-  #       - main
+  push:
+      branches:
+        - main
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -64,6 +64,11 @@ jobs:
           fi
 
           echo "RENEW -> $RENEW"
+
+      - name: call function
+        run: |
+          bash ./seripts/hello
+          echo "message is $?"
 
 
 
