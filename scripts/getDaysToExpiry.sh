@@ -5,6 +5,6 @@ set -eu
 source ./scripts/functions.sh
 
 DaysToExpiry
-days="$?"
+days=$?
 
 echo "$days"
