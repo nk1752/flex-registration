@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #set -e
 
@@ -15,6 +15,9 @@ echo "WORKING_DIR: $WORKING_DIR"
 
 echo "cat name: $cat"
 echo "top level env: $name"
+
+echo "first name: $first_name"
+echo "last name: $last_name"
 
 
 Display $1 $2

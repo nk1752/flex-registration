@@ -51,9 +51,11 @@ jobs:
 
       - name: get list
         run: |
-          bash ${GITHUB_WORKSPACE}/scripts/getList.sh ${{ env.name }} ${{ steps.vars.outputs.last }}
+          bash ${GITHUB_WORKSPACE}/scripts/getList.sh  
         env: 
             cat: "Tiger"
+            first_name: ${{ env.name }}
+            last_name: ${{ steps.vars.outputs.last }}
 
       - name: get days
         run: |    
