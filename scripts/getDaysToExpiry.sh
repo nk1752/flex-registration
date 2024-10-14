@@ -9,3 +9,4 @@ source ./scripts/functions.sh
 days=99
 echo "script days -> $days"
 
+echo "$days"
