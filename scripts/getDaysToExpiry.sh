@@ -4,8 +4,7 @@ set -eu
 
 source ./scripts/functions.sh
 
-#DaysToExpiry
-#days="$?"
-days=2
+DaysToExpiry
+days="$?"
 
 echo "$days"
