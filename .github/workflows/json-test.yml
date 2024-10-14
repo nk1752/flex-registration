@@ -27,10 +27,7 @@ jobs:
         run: |
           client_id=349759438579347
           client_secret=349759438579
-          json_string=$"{\"client_id\":\"$client_id\",\"client_secret\":\"$client_secret\"}"
-          echo "json_string -> $json_string"
-
-          echo $json_string > login.json
+          echo "{\"client_id\":\"$client_id\",\"client_secret\":\"$client_secret\"}" > login.json
           jq . login.json
 
       
