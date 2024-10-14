@@ -71,8 +71,6 @@ jobs:
           message=$(bash ${GITHUB_WORKSPACE}/scripts/hello.sh "nadeem")
           echo "message is $message"
 
-          sum=$(bash ${GITHUB_WORKSPACE}/scripts/sum.sh 2 3)
-          echo "sum is $sum"
 
 
 
