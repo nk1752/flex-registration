@@ -82,7 +82,7 @@ jobs:
       - name: get days
         run: |
           days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
-          echo "days -> $days"
+          echo "workflow days -> $days"
 
 
 
