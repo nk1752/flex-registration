@@ -55,6 +55,7 @@ function HttpCode(){
     exit 1
   else
     return $http_code  
-  exit 0
+    exit 0
+  fi
 
 }
