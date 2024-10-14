@@ -28,7 +28,7 @@ jobs:
           name="John"
           age=30
           # Create a simple JSON string
-          json_string='{"name": $name, "age": $age}'
+          json_string='{"name": "$name", "age": "$age"}'
           echo $json_string
 
           # Write the JSON string to a file
