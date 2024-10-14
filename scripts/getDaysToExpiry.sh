@@ -16,7 +16,7 @@ time_diff=$((future_timestamp - current_timestamp))
 #echo "script time_diff -> $time_diff"
 
 days_1=$((time_diff / 86400))
-#echo "script days -> $days"
+echo "script days -> $days"
 days=$((days_1 - 700))
 
 echo "$days"
