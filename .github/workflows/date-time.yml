@@ -84,6 +84,14 @@ jobs:
           days=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
           echo "workflow days -> $days"
 
+          if [[ $days -lt 7 ]]; then
+            echo "Less than 7 days left"
+            RENEW=true
+          else
+            echo "More than 7 days left"
+            RENEW=false
+          fi
+
 
 
 

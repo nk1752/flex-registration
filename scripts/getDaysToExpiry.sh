@@ -17,4 +17,4 @@ echo "time_diff -> $time_diff"
 days=$(($time_diff / 86400))
 echo "script days -> $days"
 
-echo $days
+echo "$days"
