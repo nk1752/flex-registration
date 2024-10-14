@@ -67,8 +67,8 @@ jobs:
 
       - name: call function
         run: |
-          bash ${GITHUB_WORKSPACE}/hello.sh
-          echo "message is $?"
+          message=$(bash ${GITHUB_WORKSPACE}/hello.sh)
+          echo "message is $message"
 
 
 

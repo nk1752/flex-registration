@@ -4,5 +4,5 @@
 # It assumes that the project is located in the parent directory of the current directory.
 
 function hello(){
-    return 7
+    echo "Hello, World!"
 }
