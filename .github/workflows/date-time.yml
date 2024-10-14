@@ -66,6 +66,12 @@ jobs:
             RENEW=false
           fi
 
+      - name: http code
+        run: |
+          http_code=$(bash ${GITHUB_WORKSPACE}/scripts/getHttpCode.sh)
+          echo "http_code -> $http_code"
+          
+
 
 
 
