@@ -51,20 +51,20 @@ jobs:
           list=$(bash ${GITHUB_WORKSPACE}/scripts/getList.sh)
           echo "list is $list"
 
-      - name: get days
-        run: |    
-          jq . reg-time.json
-          days_to_expiry=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
+      # - name: get days
+      #   run: |    
+      #     jq . reg-time.json
+      #     days_to_expiry=$(bash ${GITHUB_WORKSPACE}/scripts/getDaysToExpiry.sh)
           
-          echo "days_to_expiry -> $days_to_expiry"
+      #     echo "days_to_expiry -> $days_to_expiry"
 
-          if [[ $days_to_expiry -lt 7 ]]; then
-            echo "Less than 7 days left"
-            RENEW=true
-          else
-            echo "More than 7 days left"
-            RENEW=false
-          fi
+      #     if [[ $days_to_expiry -lt 7 ]]; then
+      #       echo "Less than 7 days left"
+      #       RENEW=true
+      #     else
+      #       echo "More than 7 days left"
+      #       RENEW=false
+      #     fi
 
       - name: http code
         run: |
