@@ -5,11 +5,11 @@ function sum(){
 
   local num1=$1
   local num2=$2
-  local sum=$((num1+num2))
+  local result=$((num1+num2))
 
-  echo "func sum -> $sum"
+  echo "func sum -> $result"
 
-  return $sum
+  return $result
   
 }
 
@@ -47,8 +47,10 @@ function HttpCode(){
   # local script_path=$script_dir/$script_name
   # echo "script_path -> $script_path"
 
-  local http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
-  echo "func http_code -> $http_code"
+  # local http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
+  # echo "func http_code -> $http_code"
+
+  local http_code=101
 
   return $http_code
 
