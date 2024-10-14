@@ -25,13 +25,9 @@ jobs:
 
       - name: make json
         run: |
-          name="John"
-          age=30
-          # Create a simple JSON string
-          json_string={"name": "$name", "age": "$age"}
-          echo $json_string
-
-          # Write the JSON string to a file
-          echo $json_string > data.json
+          name="nadeem"
+          id=1
+          json_string=$"{\"name\":\"$name\",\"id\":$id}"
+          echo "json_string -> $json_string"
 
       
