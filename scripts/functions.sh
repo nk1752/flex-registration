@@ -48,7 +48,7 @@ function HttpCode(){
   # echo "script_path -> $script_path"
 
   local http_code=$(curl -so /dev/null -w "%{http_code}" https://www.google.com)
-  echo "func http_code -> $http_code"
+  echo "$http_code"
 
   return $http_code
 
