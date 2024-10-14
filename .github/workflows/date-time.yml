@@ -44,15 +44,15 @@ jobs:
       - name: step vars
         id: vars
         run: |
-          name="khalid"
+          last="khalid"
           svar=$(bash ${GITHUB_WORKSPACE}/scripts/stepVars.sh)
           echo "svar -> $svar"
-          echo "name=$name" >> $GITHUB_OUTPUT
+          echo "last=$last" >> $GITHUB_OUTPUT
 
       - name: get list
         run: |
-          list=$(bash ${GITHUB_WORKSPACE}/scripts/getList.sh)
-          echo "list is $list"
+          bash ${GITHUB_WORKSPACE}/scripts/getList.sh
+          
 
       - name: get days
         run: |    
