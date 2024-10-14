@@ -62,6 +62,7 @@ jobs:
             echo "fgw_name_c -> $fgw_name_c"
             bash ${GITHUB_WORKSPACE}/scripts/getList.sh $fgw_name_c
           done
+          ls -l
         
 
             
