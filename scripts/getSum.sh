@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+#set -eu
 
 # call sum function from scripts directory
 source ./scripts/functions.sh
