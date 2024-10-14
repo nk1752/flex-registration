@@ -27,7 +27,7 @@ jobs:
         run: |
           name="nadeem"
           id=1
-          echo {\"name\":\"$name\",\"id\":\"$id\"} > login.json
+          echo '{"name": "$name"}' > login.json
           jq . login.json
 
       
