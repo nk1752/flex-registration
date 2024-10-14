@@ -1,4 +1,6 @@
 #!/bin/bash
 
-echo "script name -> $name"
+#echo "$name"
 test_var="script"
+
+echo "$test_var"

@@ -43,8 +43,8 @@ jobs:
       - name: step vars
         run: |
           name="nadeem"
-          bash ${GITHUB_WORKSPACE}/scripts/stepVars.sh
-          echo "test_var -> $test_var"
+          svar=$(bash ${GITHUB_WORKSPACE}/scripts/stepVars.sh)
+          echo "svar -> $svar"
 
       - name: get list
         run: |
