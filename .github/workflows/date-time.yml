@@ -57,7 +57,7 @@ jobs:
             fgw_name: $fgw_name_c
         run: |
           fgw_name='fgw-regionsbank-dev'
-          for counter in {1..5}: do
+          for counter in {1..5}; do
             fgw_name_c="$fgw_name-$counter"
             echo "fgw_name_c -> $fgw_name_c"
             bash ${GITHUB_WORKSPACE}/scripts/getList.sh $fgw_name_c
