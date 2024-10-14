@@ -20,4 +20,4 @@ echo "first name: $first_name"
 echo "last name: $last_name"
 
 
-Display $1 $2
+Display $name $last_name

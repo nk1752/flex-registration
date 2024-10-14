@@ -50,12 +50,16 @@ jobs:
           echo "last=$last" >> $GITHUB_OUTPUT
 
       - name: get list
-        run: |
-          bash ${GITHUB_WORKSPACE}/scripts/getList.sh  
         env: 
             cat: "Tiger"
             first_name: ${{ env.name }}
             last_name: ${{ steps.vars.outputs.last }}
+        run: |
+          bash ${GITHUB_WORKSPACE}/scripts/getList.sh  
+          echo "can I still do this"
+        
+
+            
 
       - name: get days
         run: |    
