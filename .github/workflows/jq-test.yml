@@ -28,7 +28,7 @@ jobs:
           regyaml="test"
           configyaml="test2"
           echo "{}" > config.json
-          echo "$(jq --arg regyaml "$regyaml" configyaml "$configyaml"  '. += {"regyaml": $regyaml, "configyaml": $configyaml}' config.json)" > config.json
+          echo "$(jq --arg regyaml "$regyaml", --arg configyaml "$configyaml"  '. += {"regyaml": $regyaml, "configyaml": $configyaml}' config.json)" > config.json
           jq . config.json
 
 
