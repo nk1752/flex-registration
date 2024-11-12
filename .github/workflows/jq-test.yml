@@ -10,7 +10,6 @@ env:
   # Use docker.io for Docker Hub if empty
   RENEW: false
   id: 1
-  name: "nadeem"
 
 jobs:
   JsonTest:
@@ -26,10 +25,10 @@ jobs:
 
       - name: make json
         run: |
+          regyaml="test"
+          configyaml="test2"
           echo "{}" > config.json
-          echo "$(jq --arg name "$name" '. += { "obj1":{"name": $name, "id": 1} }' config.json)" > config.json
-          echo "$(jq --arg name "khalid" '. += { "obj2":{"name": $name, "id": 2} }' config.json)" > config.json
-          echo "$(jq --arg name "inaaya" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
+          echo "$(jq --arg regyaml "$regyaml", configyaml "$configyaml"  '. += {"regyaml": $regyaml, "configyaml": $configyaml}' config.json)" > config.json
           jq . config.json
 
           BG="obj2"
