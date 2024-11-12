@@ -1,0 +1,47 @@
+name: jq-test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  # Use docker.io for Docker Hub if empty
+  RENEW: false
+  id: 1
+  name: "nadeem"
+
+jobs:
+  JsonTest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # read|write|none
+      id-token: write # read|write|none
+      
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: make json
+        run: |
+          echo "{}" > config.json
+          echo "$(jq --arg name "$name" '. += { "obj1":{"name": $name, "id": 1} }' config.json)" > config.json
+          echo "$(jq --arg name "khalid" '. += { "obj2":{"name": $name, "id": 2} }' config.json)" > config.json
+          echo "$(jq --arg name "inaaya" '. += { "obj3":{"name": $name, "id": 3} }' config.json)" > config.json
+          jq . config.json
+
+          BG="obj2"
+          echo checking for $BG
+          check=$(jq --arg bg "$BG" '.[$bg]' config.json)
+          echo $check
+          # check for true or false in bash
+          if [[ "$check" == null ]]; then
+            echo "Not found"
+          else
+            echo "found"
+          fi
+
+
+      
