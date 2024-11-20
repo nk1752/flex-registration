@@ -6,7 +6,7 @@ on:
       TAG:
         description: 'TAG version'
         type: string
-        required: true
+        required: false
         default: latest
 
 jobs:
