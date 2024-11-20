@@ -21,7 +21,7 @@ jobs:
 
       - name: test input
         run: |
-          if [ "${{ inputs.TAG }}" == null ]; then
+          if [ "${{ inputs.TAG }}" == "" ]; then
             echo "TAG is empty"
           else
             echo "TAG is not empty"
