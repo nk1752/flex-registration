@@ -5,6 +5,7 @@ on:
     inputs:
       TAG:
         description: 'TAG version'
+        type: string
         required: true
         default: latest
 
@@ -19,11 +20,11 @@ jobs:
     
     steps:
 
-      - name: setup docker
-        uses: docker/setup-buildx-action@v1
-
-      - name: pull image
+      - name: test input
         run: |
-          docker pull mulesoft/flex-gateway:${{ github.event.inputs.TAG }}
-          docker images
+          if [ -z "${{ inputs.TAG }}" ]; then
+            echo "TAG is empty"
+          else
+            echo "TAG is not empty"
+          fi
       
