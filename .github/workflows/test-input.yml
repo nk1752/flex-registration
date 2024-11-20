@@ -7,7 +7,6 @@ on:
         description: 'TAG version'
         type: string
         required: false
-        default: latest
 
 jobs:
   pull-flex:
@@ -22,7 +21,7 @@ jobs:
 
       - name: test input
         run: |
-          if [ -z "${{ inputs.TAG }}" ]; then
+          if [ "${{ inputs.TAG }}" == null ]; then
             echo "TAG is empty"
           else
             echo "TAG is not empty"
